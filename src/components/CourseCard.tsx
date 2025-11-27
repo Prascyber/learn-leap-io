@@ -13,7 +13,7 @@ interface CourseCardProps {
 
 const CourseCard = ({ title, description, duration, slug }: CourseCardProps) => {
   return (
-    <Card className="h-full flex flex-col hover:shadow-lg transition-shadow">
+    <Card className="h-full flex flex-col group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-pointer">
       <CardHeader>
         <div className="flex items-start justify-between gap-2 mb-2">
           <Badge variant="secondary" className="flex items-center gap-1">
@@ -45,7 +45,7 @@ const CourseCard = ({ title, description, duration, slug }: CourseCardProps) => 
         </ul>
       </CardContent>
       <CardFooter>
-        <Button asChild className="w-full">
+        <Button asChild className="w-full group-hover:scale-110 transition-transform duration-300 ease-out">
           <Link to={`/course/${slug}`}>View Details</Link>
         </Button>
       </CardFooter>

@@ -96,7 +96,7 @@ const CourseDetail = () => {
                 <h2 className="text-2xl font-bold mb-4">Course Curriculum</h2>
                 <div className="space-y-2">
                   {course.modules.map((module, index) => (
-                    <Card key={index}>
+                    <Card key={index} className="group hover:shadow-lg hover:scale-105 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                       <CardContent className="py-4">
                         <div className="flex items-center gap-3">
                           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-semibold">
@@ -115,7 +115,7 @@ const CourseDetail = () => {
                 <h2 className="text-2xl font-bold mb-4">Course Benefits</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {course.benefits.map((benefit, index) => (
-                    <Card key={index}>
+                    <Card key={index} className="group hover:shadow-lg hover:scale-105 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                       <CardContent className="pt-6">
                         <div className="flex items-start gap-3">
                           <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
@@ -143,7 +143,7 @@ const CourseDetail = () => {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              <Card className="sticky top-20">
+              <Card className="sticky top-20 group hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-out">
                 <CardHeader>
                   <CardTitle>Course Highlights</CardTitle>
                 </CardHeader>
@@ -176,7 +176,7 @@ const CourseDetail = () => {
                       <div className="text-sm text-muted-foreground">Lifetime access</div>
                     </div>
                   </div>
-                  <Button className="w-full mt-4" size="lg">
+                  <Button className="w-full mt-4 group-hover:scale-110 transition-transform duration-300 ease-out" size="lg">
                     Enroll Now
                   </Button>
                 </CardContent>
