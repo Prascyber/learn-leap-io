@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CourseCard from "@/components/CourseCard";
+import AnimatedBackground from "@/components/AnimatedBackground";
 import { courses } from "@/data/courses";
 import { CheckCircle, Award, BookOpen, Users, TrendingUp, Clock } from "lucide-react";
 
@@ -16,8 +17,11 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-        <div className="container">
+      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
+        {/* Animated Background */}
+        <AnimatedBackground />
+        
+        <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <Badge variant="secondary" className="text-sm">
               India's Premier Online Learning Platform
