@@ -39,7 +39,7 @@ const Policies = () => {
       <section className="py-16">
         <div className="container max-w-4xl space-y-8">
           {/* Privacy Policy */}
-          <Card id="privacy">
+          <Card id="privacy" className="group hover:shadow-2xl hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 ease-out">
             <CardHeader>
               <CardTitle className="text-2xl">Privacy Policy</CardTitle>
             </CardHeader>
@@ -83,7 +83,7 @@ const Policies = () => {
           </Card>
 
           {/* Terms & Conditions */}
-          <Card id="terms">
+          <Card id="terms" className="group hover:shadow-2xl hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 ease-out">
             <CardHeader>
               <CardTitle className="text-2xl">Terms & Conditions</CardTitle>
             </CardHeader>
@@ -131,7 +131,7 @@ const Policies = () => {
           </Card>
 
           {/* Refund Policy */}
-          <Card id="refund">
+          <Card id="refund" className="group hover:shadow-2xl hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 ease-out">
             <CardHeader>
               <CardTitle className="text-2xl">Refund Policy</CardTitle>
             </CardHeader>
