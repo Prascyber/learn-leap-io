@@ -26,9 +26,11 @@ const Index = () => {
             <Badge variant="secondary" className="text-sm">
               India's Premier Online Learning Platform
             </Badge>
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl lg:text-6xl font-bold leading-tight animate-fade-in [animation-delay:200ms]">
               Empowering India's Future Workforce with{" "}
-              <span className="text-primary">Job-Ready Skills</span>
+              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite] bg-clip-text text-transparent font-extrabold">
+                Job-Ready Skills
+              </span>
             </h1>
             <p className="text-xl text-muted-foreground">
               Learn practical, industry-relevant courses with certificates and internship support
