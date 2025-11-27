@@ -40,9 +40,9 @@ const Contact = () => {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Contact Info Cards */}
             <div className="space-y-6">
-              <Card>
+              <Card className="group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                 <CardContent className="pt-6 space-y-4">
-                  <Phone className="h-8 w-8 text-primary" />
+                  <Phone className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
                   <div>
                     <h3 className="font-semibold mb-2">Phone</h3>
                     <p className="text-muted-foreground">+91 98765 43210</p>
@@ -51,9 +51,9 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                 <CardContent className="pt-6 space-y-4">
-                  <Mail className="h-8 w-8 text-primary" />
+                  <Mail className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
                   <div>
                     <h3 className="font-semibold mb-2">Email</h3>
                     <p className="text-muted-foreground">info@skilledge.in</p>
@@ -62,12 +62,12 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                 <CardContent className="pt-6 space-y-4">
-                  <MessageCircle className="h-8 w-8 text-primary" />
+                  <MessageCircle className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
                   <div>
                     <h3 className="font-semibold mb-2">WhatsApp</h3>
-                    <Button onClick={handleWhatsApp} variant="outline" className="w-full">
+                    <Button onClick={handleWhatsApp} variant="outline" className="w-full group-hover:scale-110 transition-transform duration-300">
                       <MessageCircle className="h-4 w-4 mr-2" />
                       Chat on WhatsApp
                     </Button>
@@ -75,9 +75,9 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                 <CardContent className="pt-6 space-y-4">
-                  <MapPin className="h-8 w-8 text-primary" />
+                  <MapPin className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-300" />
                   <div>
                     <h3 className="font-semibold mb-2">Location</h3>
                     <p className="text-muted-foreground">Serving students across India</p>
@@ -89,7 +89,7 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card>
+              <Card className="group hover:shadow-2xl hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 ease-out">
                 <CardHeader>
                   <CardTitle>Send Us a Message</CardTitle>
                 </CardHeader>
@@ -127,7 +127,7 @@ const Contact = () => {
                       />
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full">
+                    <Button type="submit" size="lg" className="w-full group-hover:scale-105 transition-transform duration-300">
                       Send Message
                     </Button>
 

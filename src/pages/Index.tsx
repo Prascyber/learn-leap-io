@@ -141,10 +141,10 @@ const Index = () => {
                 description: "Learn at your own pace with permanent access to course materials"
               }
             ].map((feature, index) => (
-              <Card key={index}>
+              <Card key={index} className="group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                 <CardContent className="pt-6">
-                  <feature.icon className="h-12 w-12 mb-4 text-primary" />
-                  <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                  <feature.icon className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
@@ -180,11 +180,11 @@ const Index = () => {
                 text: "Learned Power BI and healthcare KPIs from scratch. The real datasets made all the difference. Highly recommend!"
               }
             ].map((testimonial, index) => (
-              <Card key={index}>
+              <Card key={index} className="group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                 <CardContent className="pt-6 space-y-4">
-                  <p className="text-muted-foreground italic">"{testimonial.text}"</p>
+                  <p className="text-muted-foreground italic group-hover:text-foreground transition-colors duration-300">"{testimonial.text}"</p>
                   <div>
-                    <div className="font-semibold">{testimonial.name}</div>
+                    <div className="font-semibold group-hover:text-primary transition-colors duration-300">{testimonial.name}</div>
                     <div className="text-sm text-muted-foreground">{testimonial.course}</div>
                   </div>
                 </CardContent>

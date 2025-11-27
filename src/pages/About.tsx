@@ -26,18 +26,18 @@ const About = () => {
       <section className="py-16">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-8">
-            <Card>
+            <Card className="group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
               <CardContent className="pt-6 space-y-4">
-                <Target className="h-12 w-12 text-primary" />
+                <Target className="h-12 w-12 text-primary group-hover:scale-110 transition-transform duration-300" />
                 <h2 className="text-2xl font-bold">Our Vision</h2>
                 <p className="text-muted-foreground">
                   To become India's most trusted online learning platform, bridging the gap between education and employment by delivering world-class, practical courses that transform careers and empower individuals to achieve their professional dreams.
                 </p>
               </CardContent>
             </Card>
-            <Card>
+            <Card className="group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
               <CardContent className="pt-6 space-y-4">
-                <Heart className="h-12 w-12 text-primary" />
+                <Heart className="h-12 w-12 text-primary group-hover:scale-110 transition-transform duration-300" />
                 <h2 className="text-2xl font-bold">Our Mission</h2>
                 <p className="text-muted-foreground">
                   To provide affordable, accessible, and industry-relevant education to every aspiring professional in India. We are committed to delivering hands-on training, recognized certifications, and comprehensive career support that helps our students secure meaningful employment in their chosen fields.
@@ -52,7 +52,7 @@ const About = () => {
       <section className="py-16 bg-muted/30">
         <div className="container">
           <div className="max-w-4xl mx-auto">
-            <Card>
+            <Card className="group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
               <CardContent className="pt-8 space-y-6">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
@@ -115,10 +115,10 @@ const About = () => {
                 description: "Quality education accessible to everyone"
               }
             ].map((feature, index) => (
-              <Card key={index}>
+              <Card key={index} className="group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                 <CardContent className="pt-6 text-center space-y-4">
-                  <feature.icon className="h-12 w-12 mx-auto text-primary" />
-                  <h3 className="font-semibold text-lg">{feature.title}</h3>
+                  <feature.icon className="h-12 w-12 mx-auto text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="font-semibold text-lg group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
                   <p className="text-sm text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
