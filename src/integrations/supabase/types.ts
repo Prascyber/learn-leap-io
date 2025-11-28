@@ -14,7 +14,71 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      course_enrollments: {
+        Row: {
+          course_id: string
+          course_slug: string
+          course_title: string
+          enrolled_at: string | null
+          id: string
+          payment_status: string | null
+          user_id: string
+        }
+        Insert: {
+          course_id: string
+          course_slug: string
+          course_title: string
+          enrolled_at?: string | null
+          id?: string
+          payment_status?: string | null
+          user_id: string
+        }
+        Update: {
+          course_id?: string
+          course_slug?: string
+          course_title?: string
+          enrolled_at?: string | null
+          id?: string
+          payment_status?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_enrollments_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
