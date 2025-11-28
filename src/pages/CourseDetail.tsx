@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -7,10 +7,32 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { courses } from "@/data/courses";
 import { Award, Clock, CheckCircle, Users, TrendingUp } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
 
 const CourseDetail = () => {
   const { slug } = useParams();
   const course = courses.find((c) => c.slug === slug);
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleEnrollClick = () => {
+    if (!user) {
+      toast({
+        title: "Login Required",
+        description: "Please log in to enroll in this course",
+        variant: "destructive",
+      });
+      navigate("/auth");
+    } else {
+      // TODO: Integrate Razorpay payment
+      toast({
+        title: "Coming Soon",
+        description: "Payment integration will be available soon",
+      });
+    }
+  };
 
   if (!course) {
     return (
@@ -50,7 +72,9 @@ const CourseDetail = () => {
             <h1 className="text-4xl lg:text-5xl font-bold">{course.title}</h1>
             <p className="text-xl text-muted-foreground">{course.fullDescription}</p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg">Enroll Now</Button>
+              <Button size="lg" onClick={handleEnrollClick}>
+                Enroll Now
+              </Button>
               <Button size="lg" variant="outline" asChild>
                 <Link to="/contact">Contact Us</Link>
               </Button>
@@ -176,7 +200,11 @@ const CourseDetail = () => {
                       <div className="text-sm text-muted-foreground">Lifetime access</div>
                     </div>
                   </div>
-                  <Button className="w-full mt-4 group-hover:scale-110 transition-transform duration-300 ease-out" size="lg">
+                  <Button 
+                    className="w-full mt-4 group-hover:scale-110 transition-transform duration-300 ease-out" 
+                    size="lg"
+                    onClick={handleEnrollClick}
+                  >
                     Enroll Now
                   </Button>
                 </CardContent>

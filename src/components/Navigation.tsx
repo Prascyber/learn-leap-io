@@ -1,11 +1,25 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, Menu, X } from "lucide-react";
+import { GraduationCap, Menu, X, User, LogOut } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, signOut } = useAuth();
+  
+  const handleSignOut = async () => {
+    await signOut();
+  };
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -37,9 +51,38 @@ const Navigation = () => {
               {link.label}
             </Link>
           ))}
-          <Button size="sm" asChild>
-            <Link to="/courses">Enroll Now</Link>
-          </Button>
+          
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative h-10 w-10 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg">
+                  <Avatar className="h-10 w-10">
+                    <AvatarImage src={user.user_metadata?.avatar_url} alt={user.user_metadata?.full_name || user.email} />
+                    <AvatarFallback>
+                      {user.user_metadata?.full_name?.[0]?.toUpperCase() || user.email?.[0]?.toUpperCase() || "U"}
+                    </AvatarFallback>
+                  </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuItem asChild className="cursor-pointer transition-colors hover:bg-accent">
+                  <Link to="/profile" className="flex items-center">
+                    <User className="mr-2 h-4 w-4" />
+                    Profile
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer transition-colors hover:bg-accent">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button size="sm" asChild>
+              <Link to="/auth">Login</Link>
+            </Button>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -68,11 +111,27 @@ const Navigation = () => {
                 {link.label}
               </Link>
             ))}
-            <Button size="sm" asChild className="w-full">
-              <Link to="/courses" onClick={() => setIsMenuOpen(false)}>
-                Enroll Now
-              </Link>
-            </Button>
+            
+            {user ? (
+              <>
+                <Button size="sm" variant="outline" asChild className="w-full">
+                  <Link to="/profile" onClick={() => setIsMenuOpen(false)}>
+                    <User className="mr-2 h-4 w-4" />
+                    Profile
+                  </Link>
+                </Button>
+                <Button size="sm" variant="outline" onClick={() => { handleSignOut(); setIsMenuOpen(false); }} className="w-full">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <Button size="sm" asChild className="w-full">
+                <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                  Login
+                </Link>
+              </Button>
+            )}
           </div>
         </div>
       )}
