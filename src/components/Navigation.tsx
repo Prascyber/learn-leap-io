@@ -35,7 +35,7 @@ const Navigation = () => {
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-bold text-xl">
           <GraduationCap className="h-6 w-6 text-primary" />
-          <span>SkillEdge Academy</span>
+          <span>EdHere Academy</span>
         </Link>
 
         {/* Desktop Navigation */}

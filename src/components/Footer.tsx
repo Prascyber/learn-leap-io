@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 font-bold text-lg">
               <GraduationCap className="h-5 w-5 text-primary" />
-              <span>SkillEdge Academy</span>
+              <span>EdHere Academy</span>
             </Link>
             <p className="text-sm text-muted-foreground">
               Empowering India's Future Workforce with Job-Ready Skills
