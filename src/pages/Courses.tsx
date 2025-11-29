@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CourseCard from "@/components/CourseCard";
 import { courses } from "@/data/courses";
+import { courseImages } from "@/data/courseImages";
 
 const Courses = () => {
   return (
@@ -31,6 +32,7 @@ const Courses = () => {
                 description={course.shortDescription}
                 duration={course.duration}
                 slug={course.slug}
+                image={courseImages[course.slug]}
               />
             ))}
           </div>

@@ -10,6 +10,7 @@ export interface Course {
   whatYouWillLearn: string[];
   benefits: string[];
   faqs: { question: string; answer: string }[];
+  image?: string;
 }
 
 export const courses: Course[] = [

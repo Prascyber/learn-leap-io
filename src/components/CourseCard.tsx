@@ -9,11 +9,22 @@ interface CourseCardProps {
   description: string;
   duration: string;
   slug: string;
+  image?: string;
 }
 
-const CourseCard = ({ title, description, duration, slug }: CourseCardProps) => {
+const CourseCard = ({ title, description, duration, slug, image }: CourseCardProps) => {
   return (
-    <Card className="h-full flex flex-col group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-pointer">
+    <Card className="h-full flex flex-col group hover:shadow-2xl hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 ease-out cursor-pointer overflow-hidden">
+      {image && (
+        <div className="relative h-48 w-full overflow-hidden">
+          <img 
+            src={image} 
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+        </div>
+      )}
       <CardHeader>
         <div className="flex items-start justify-between gap-2 mb-2">
           <Badge variant="secondary" className="flex items-center gap-1">
