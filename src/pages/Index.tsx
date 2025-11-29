@@ -7,7 +7,9 @@ import Footer from "@/components/Footer";
 import CourseCard from "@/components/CourseCard";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import { courses } from "@/data/courses";
+import { courseImages } from "@/data/courseImages";
 import { CheckCircle, Award, BookOpen, Users, TrendingUp, Clock } from "lucide-react";
+import heroImage from "@/assets/hero-education.jpg";
 
 const Index = () => {
   const featuredCourses = courses.slice(0, 3);
@@ -17,7 +19,17 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-secondary/5 overflow-hidden">
+      <section className="relative py-20 lg:py-32 overflow-hidden">
+        {/* Hero Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroImage} 
+            alt="Students learning together" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background/95 to-secondary/10" />
+        </div>
+        
         {/* Animated Background */}
         <AnimatedBackground />
         
@@ -88,6 +100,7 @@ const Index = () => {
                 description={course.shortDescription}
                 duration={course.duration}
                 slug={course.slug}
+                image={courseImages[course.slug]}
               />
             ))}
           </div>
