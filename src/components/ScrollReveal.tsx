@@ -21,8 +21,8 @@ const ScrollReveal = ({ children, delay = 0, direction = 'up', className = '' }:
         }
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.15,
+        rootMargin: '0px'
       }
     );
 
@@ -40,15 +40,15 @@ const ScrollReveal = ({ children, delay = 0, direction = 'up', className = '' }:
   const getTransform = () => {
     switch (direction) {
       case 'up':
-        return 'translateY(50px)';
+        return 'translateY(30px)';
       case 'down':
-        return 'translateY(-50px)';
+        return 'translateY(-30px)';
       case 'left':
-        return 'translateX(50px)';
+        return 'translateX(30px)';
       case 'right':
-        return 'translateX(-50px)';
+        return 'translateX(-30px)';
       default:
-        return 'translateY(50px)';
+        return 'translateY(30px)';
     }
   };
 
@@ -59,7 +59,7 @@ const ScrollReveal = ({ children, delay = 0, direction = 'up', className = '' }:
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translate(0, 0)' : getTransform(),
-        transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+        transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
       }}
     >
       {children}

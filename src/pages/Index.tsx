@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CourseCard from "@/components/CourseCard";
-import AnimatedBackground from "@/components/AnimatedBackground";
 import ScrollReveal from "@/components/ScrollReveal";
 import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
@@ -21,82 +20,28 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
-        {/* Hero Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImage} 
-            alt="Students learning together" 
-            className="w-full h-full object-cover opacity-20 animate-[float_6s_ease-in-out_infinite]"
-            style={{
-              animation: 'float 6s ease-in-out infinite',
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background/95 to-secondary/10" />
-        </div>
-        
-        <style>{`
-          @keyframes float {
-            0%, 100% {
-              transform: translateY(0px) scale(1.05);
-            }
-            50% {
-              transform: translateY(-20px) scale(1.08);
-            }
-          }
-        `}</style>
-        
-        {/* Animated Background */}
-        <AnimatedBackground />
+      <section className="relative py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-muted/50 to-background" />
         
         <div className="container relative z-10">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <Badge variant="secondary" className="text-sm">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <Badge variant="secondary" className="text-sm px-4 py-1">
               India's Premier Online Learning Platform
             </Badge>
-            <p className="text-lg text-muted-foreground mb-4">
-              Learn practical, industry-relevant courses with completion certificates and internship support
-            </p>
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight animate-fade-in [animation-delay:200ms]">
+            <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
               Empowering India's Future Workforce with{" "}
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite] bg-clip-text text-transparent font-extrabold">
+              <span className="text-primary">
                 Job-Ready Skills
               </span>
             </h1>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                asChild
-                className="transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
-                style={{
-                  transform: 'translateZ(0)',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(20px) translateY(-4px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(0) translateY(0)';
-                }}
-              >
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Learn practical, industry-relevant courses with completion certificates and internship support
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <Button size="lg" asChild>
                 <Link to="/courses">Explore Courses</Link>
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                asChild
-                className="transition-all duration-300 hover:shadow-[0_10px_40px_rgba(234,179,8,0.3)] hover:-translate-y-1"
-                style={{
-                  transform: 'translateZ(0)',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(20px) translateY(-4px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(0) translateY(0)';
-                }}
-              >
+              <Button size="lg" variant="outline" asChild>
                 <Link to="/about">Learn More</Link>
               </Button>
             </div>
@@ -158,22 +103,10 @@ const Index = () => {
               }
             ].map((audience, index) => (
               <ScrollReveal key={index} delay={index * 100}>
-                <Card 
-                  className="group hover:shadow-2xl hover:border-primary/30 transition-all duration-300 ease-out cursor-default h-full"
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    transition: 'transform 0.3s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-10px) rotateX(5deg) scale(1.02)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0) rotateX(0deg) scale(1)';
-                  }}
-                >
+                <Card className="h-full hover:border-primary/50 transition-colors">
                   <CardContent className="pt-6">
-                    <audience.icon className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{audience.title}</h3>
+                    <audience.icon className="h-10 w-10 mb-4 text-primary" />
+                    <h3 className="font-semibold text-lg mb-2">{audience.title}</h3>
                     <p className="text-muted-foreground">{audience.description}</p>
                   </CardContent>
                 </Card>
@@ -260,22 +193,10 @@ const Index = () => {
               }
             ].map((feature, index) => (
               <ScrollReveal key={index} delay={index * 100}>
-                <Card 
-                  className="group hover:shadow-2xl hover:border-primary/30 transition-all duration-300 ease-out cursor-default h-full"
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    transition: 'transform 0.3s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-10px) rotateX(5deg) scale(1.02)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0) rotateX(0deg) scale(1)';
-                  }}
-                >
+                <Card className="h-full hover:border-primary/50 transition-colors">
                   <CardContent className="pt-6">
-                    <feature.icon className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
+                    <feature.icon className="h-10 w-10 mb-4 text-primary" />
+                    <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
                     <p className="text-muted-foreground">{feature.description}</p>
                   </CardContent>
                 </Card>
@@ -314,24 +235,12 @@ const Index = () => {
                 text: "Learned Power BI and healthcare KPIs from scratch. The real datasets made all the difference. Highly recommend!"
               }
             ].map((testimonial, index) => (
-              <ScrollReveal key={index} delay={index * 150} direction="up">
-                <Card 
-                  className="group hover:shadow-2xl hover:border-primary/30 transition-all duration-300 ease-out cursor-default h-full"
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    transition: 'transform 0.3s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-10px) scale(1.03)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  }}
-                >
+              <ScrollReveal key={index} delay={index * 100} direction="up">
+                <Card className="h-full hover:border-primary/50 transition-colors">
                   <CardContent className="pt-6 space-y-4">
-                    <p className="text-muted-foreground italic group-hover:text-foreground transition-colors duration-300">"{testimonial.text}"</p>
+                    <p className="text-muted-foreground italic">"{testimonial.text}"</p>
                     <div>
-                      <div className="font-semibold group-hover:text-primary transition-colors duration-300">{testimonial.name}</div>
+                      <div className="font-semibold">{testimonial.name}</div>
                       <div className="text-sm text-muted-foreground">{testimonial.course}</div>
                     </div>
                   </CardContent>
