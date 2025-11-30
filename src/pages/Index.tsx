@@ -8,9 +8,10 @@ import CourseCard from "@/components/CourseCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
-import { CheckCircle, Award, BookOpen, Users, TrendingUp, Clock, GraduationCap, Briefcase, Building2 } from "lucide-react";
+import { CheckCircle, Award, BookOpen, Users, TrendingUp, Clock, GraduationCap, Briefcase, Building2, Target, Video, FileCheck, Rocket, Globe, Briefcase as BriefcaseAlt, DollarSign, UserCheck, Download, MessageSquare, Calendar, Shield, Lightbulb } from "lucide-react";
 import heroImage from "@/assets/hero-education.jpg";
 import Counter from "@/components/Counter";
+import EnquiryForm from "@/components/EnquiryForm";
 
 const Index = () => {
   const featuredCourses = courses.slice(0, 3);
@@ -69,6 +70,122 @@ const Index = () => {
               <div className="text-3xl font-bold text-primary">24/7</div>
               <div className="text-sm text-muted-foreground">Support</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What We Offer */}
+      <section className="py-20">
+        <div className="container">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">What We Offer</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Comprehensive learning solutions designed for your success
+              </p>
+            </div>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {[
+              {
+                icon: Target,
+                title: "Industry-Aligned Courses",
+                description: "Designed with industry experts to meet current market demands"
+              },
+              {
+                icon: Clock,
+                title: "Short-Term Programs",
+                description: "16-28 weeks intensive programs that fit your schedule"
+              },
+              {
+                icon: Briefcase,
+                title: "Onsite/Virtual Internships",
+                description: "Real workplace experience and simulated projects"
+              },
+              {
+                icon: Award,
+                title: "Completion Certificates",
+                description: "Recognized certifications to boost your career"
+              },
+              {
+                icon: CheckCircle,
+                title: "100% Practical Learning",
+                description: "Flexible online learning with onsite internship opportunities"
+              },
+              {
+                icon: BookOpen,
+                title: "Updated Curriculum",
+                description: "Content regularly updated based on industry needs"
+              }
+            ].map((offer, index) => (
+              <ScrollReveal key={index} delay={index * 100}>
+                <Card className="h-full hover:border-primary/50 transition-colors">
+                  <CardContent className="pt-6">
+                    <offer.icon className="h-10 w-10 mb-4 text-primary" />
+                    <h3 className="font-semibold text-lg mb-2">{offer.title}</h3>
+                    <p className="text-muted-foreground">{offer.description}</p>
+                  </CardContent>
+                </Card>
+              </ScrollReveal>
+            ))}
+          </div>
+          <div className="text-center">
+            <Button size="lg" asChild>
+              <Link to="/courses">View All Courses</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* How EdHere Academy Works */}
+      <section className="py-20 bg-muted/30">
+        <div className="container">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">How EdHere Academy Works</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Your journey to success in 4 simple steps
+              </p>
+            </div>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                step: "1",
+                icon: Video,
+                title: "Learn",
+                description: "Video modules, case studies & real world examples"
+              },
+              {
+                step: "2",
+                icon: Briefcase,
+                title: "Practice",
+                description: "Onsite/Virtual internships & simulated projects"
+              },
+              {
+                step: "3",
+                icon: FileCheck,
+                title: "Earn",
+                description: "Completion Certificate + Portfolio"
+              },
+              {
+                step: "4",
+                icon: Rocket,
+                title: "Grow",
+                description: "Skill-based career guidance"
+              }
+            ].map((step, index) => (
+              <ScrollReveal key={index} delay={index * 100}>
+                <Card className="h-full hover:border-primary/50 transition-colors text-center">
+                  <CardContent className="pt-6">
+                    <div className="text-4xl font-bold text-primary mb-4">Step {step.step}</div>
+                    <step.icon className="h-12 w-12 mb-4 text-primary mx-auto" />
+                    <h3 className="font-semibold text-xl mb-2">{step.title}</h3>
+                    <p className="text-muted-foreground">{step.description}</p>
+                  </CardContent>
+                </Card>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
@@ -148,48 +265,192 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Student Benefits */}
       <section className="py-20">
         <div className="container">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Why Choose Us</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Student Benefits</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Everything you need to succeed in your career journey
+                Everything you need to succeed in your learning journey
+              </p>
+            </div>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: Globe,
+                title: "Anytime, Anywhere Learning",
+                description: "Learn at your own pace, from anywhere"
+              },
+              {
+                icon: BriefcaseAlt,
+                title: "Onsite Internships",
+                description: "Real workplace experience opportunities"
+              },
+              {
+                icon: Users,
+                title: "Placement Assistance",
+                description: "Career support and job placement help"
+              },
+              {
+                icon: DollarSign,
+                title: "Affordable Programs",
+                description: "Quality education at accessible prices"
+              },
+              {
+                icon: Award,
+                title: "Completion Certificates",
+                description: "Certificate for each completed course"
+              },
+              {
+                icon: TrendingUp,
+                title: "Special Student Discounts",
+                description: "Discounts for scholarly students"
+              },
+              {
+                icon: Target,
+                title: "Job-Ready Skills",
+                description: "Practical skills employers are looking for"
+              },
+              {
+                icon: UserCheck,
+                title: "Learning Community",
+                description: "Connect with peers and mentors"
+              }
+            ].map((benefit, index) => (
+              <ScrollReveal key={index} delay={index * 100}>
+                <Card className="h-full hover:border-primary/50 transition-colors">
+                  <CardContent className="pt-6">
+                    <benefit.icon className="h-10 w-10 mb-4 text-primary" />
+                    <h3 className="font-semibold text-base mb-2">{benefit.title}</h3>
+                    <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                  </CardContent>
+                </Card>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What Makes Us Different */}
+      <section className="py-20 bg-muted/30">
+        <div className="container">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">What Makes Us Different</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Stand out features that set us apart
+              </p>
+            </div>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {[
+              {
+                icon: Target,
+                title: "Practical, Job-Focused Training",
+                description: "Real-world skills that employers value"
+              },
+              {
+                icon: Briefcase,
+                title: "Internships + Experience Letters",
+                description: "Onsite/Virtual internships with placement assistance"
+              },
+              {
+                icon: BookOpen,
+                title: "Real-World Case Studies",
+                description: "Learn from actual industry projects and scenarios"
+              },
+              {
+                icon: Lightbulb,
+                title: "Updated Industry Curriculum",
+                description: "Content aligned with current market needs"
+              },
+              {
+                icon: CheckCircle,
+                title: "Beginner-Friendly Lessons",
+                description: "Easy-to-understand content for all skill levels"
+              },
+              {
+                icon: DollarSign,
+                title: "Affordable Course Fees",
+                description: "Quality education without breaking the bank"
+              },
+              {
+                icon: Award,
+                title: "CV-Worthy Certificates",
+                description: "Recognized certifications that add real value"
+              },
+              {
+                icon: Shield,
+                title: "Flexible Learning Schedule",
+                description: "Live and recorded sessions to fit your time"
+              }
+            ].map((difference, index) => (
+              <ScrollReveal key={index} delay={index * 100}>
+                <Card className="h-full hover:border-primary/50 transition-colors">
+                  <CardContent className="pt-6">
+                    <difference.icon className="h-10 w-10 mb-4 text-primary" />
+                    <h3 className="font-semibold text-lg mb-2">{difference.title}</h3>
+                    <p className="text-muted-foreground">{difference.description}</p>
+                  </CardContent>
+                </Card>
+              </ScrollReveal>
+            ))}
+          </div>
+          <div className="text-center">
+            <Button size="lg" variant="outline" asChild>
+              <Link to="/contact">
+                <Download className="mr-2 h-4 w-4" />
+                Download Course Catalog
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose EdHere Academy */}
+      <section className="py-20">
+        <div className="container">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Why Choose EdHere Academy</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Your trusted partner for career transformation
               </p>
             </div>
           </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                icon: BookOpen,
-                title: "Industry-Driven Curriculum",
-                description: "Learn skills that employers actually need, designed by industry experts"
+                icon: Lightbulb,
+                title: "Updated Curriculum",
+                description: "Curriculum aligned with current industry trends and demands"
               },
               {
-                icon: CheckCircle,
-                title: "Practical Assignments",
-                description: "Work on real-world projects and build a portfolio that stands out"
+                icon: Briefcase,
+                title: "Onsite/Virtual Internships",
+                description: "Real internships plus practice projects for hands-on experience"
+              },
+              {
+                icon: Calendar,
+                title: "Flexible Learning",
+                description: "Choose between live or recorded sessions at your convenience"
+              },
+              {
+                icon: DollarSign,
+                title: "Affordable Pricing",
+                description: "Quality education at prices that don't burden your budget"
               },
               {
                 icon: Award,
                 title: "Completion Certificates",
-                description: "Earn recognized certificates to showcase your achievements"
+                description: "Industry-recognized certificates upon course completion"
               },
               {
-                icon: Users,
-                title: "Internship Support",
-                description: "Get connected with partner organizations for hands-on experience"
-              },
-              {
-                icon: TrendingUp,
-                title: "Affordable Pricing",
-                description: "Quality education accessible to everyone with flexible payment options"
-              },
-              {
-                icon: Clock,
-                title: "Lifetime Access",
-                description: "Learn at your own pace with permanent access to course materials"
+                icon: MessageSquare,
+                title: "Student Support",
+                description: "Dedicated support team to assist you throughout your journey"
               }
             ].map((feature, index) => (
               <ScrollReveal key={index} delay={index * 100}>
@@ -213,7 +474,7 @@ const Index = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">Student Success Stories</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Hear from students who transformed their careers with SkillEdge Academy
+                Hear from students who transformed their careers with EdHere Academy
               </p>
             </div>
           </ScrollReveal>
@@ -248,6 +509,23 @@ const Index = () => {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Student Support */}
+      <section className="py-20">
+        <div className="container">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Student Support</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Have a question? Fill out the enquiry form below and our team will contact you shortly
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={200}>
+            <EnquiryForm />
+          </ScrollReveal>
         </div>
       </section>
 
