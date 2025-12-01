@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CourseCard from "@/components/CourseCard";
-import AnimatedBackground from "@/components/AnimatedBackground";
 import ScrollReveal from "@/components/ScrollReveal";
+import HeroCarousel from "@/components/HeroCarousel";
 import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
-import { CheckCircle, Award, BookOpen, Users, TrendingUp, Clock, GraduationCap, Briefcase, Building2 } from "lucide-react";
-import heroImage from "@/assets/hero-education.jpg";
+import { CheckCircle, Award, BookOpen, Users, TrendingUp, Clock } from "lucide-react";
 import Counter from "@/components/Counter";
 
 const Index = () => {
@@ -20,89 +18,8 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
-        {/* Hero Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImage} 
-            alt="Students learning together" 
-            className="w-full h-full object-cover opacity-20 animate-[float_6s_ease-in-out_infinite]"
-            style={{
-              animation: 'float 6s ease-in-out infinite',
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background/95 to-secondary/10" />
-        </div>
-        
-        <style>{`
-          @keyframes float {
-            0%, 100% {
-              transform: translateY(0px) scale(1.05);
-            }
-            50% {
-              transform: translateY(-20px) scale(1.08);
-            }
-          }
-        `}</style>
-        
-        {/* Animated Background */}
-        <AnimatedBackground />
-        
-        <div className="container relative z-10">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <Badge variant="secondary" className="text-sm">
-              India's Premier Learning Platform
-            </Badge>
-            <p className="text-lg text-muted-foreground mb-4">
-              Learn practical, industry-relevant courses with completion certificates and internship support
-            </p>
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight animate-fade-in [animation-delay:200ms]">
-              Empowering India's Future Workforce with{" "}
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite] bg-clip-text text-transparent font-extrabold">
-                Job-Ready Skills
-              </span>
-            </h1>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                asChild
-                className="transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
-                style={{
-                  transform: 'translateZ(0)',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(20px) translateY(-4px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(0) translateY(0)';
-                }}
-              >
-                <Link to="/courses">Explore Courses</Link>
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                asChild
-                className="transition-all duration-300 hover:shadow-[0_10px_40px_rgba(234,179,8,0.3)] hover:-translate-y-1"
-                style={{
-                  transform: 'translateZ(0)',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(20px) translateY(-4px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(0) translateY(0)';
-                }}
-              >
-                <Link to="/about">Learn More</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Carousel Section */}
+      <HeroCarousel />
 
       {/* Stats Section */}
       <section className="py-12 border-y bg-muted/30">
@@ -124,61 +41,6 @@ const Index = () => {
               <div className="text-3xl font-bold text-primary">24+ hours</div>
               <div className="text-sm text-muted-foreground">Support</div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Who Should Choose Us */}
-      <section className="py-20">
-        <div className="container">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Who Should Choose Us</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Designed for learners at every stage of their career journey
-              </p>
-            </div>
-          </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: GraduationCap,
-                title: "Students",
-                description: "Graduate and postgraduate students looking to build job-ready skills and gain practical industry experience before entering the workforce"
-              },
-              {
-                icon: Briefcase,
-                title: "Professionals",
-                description: "Working professionals seeking to upskill, transition careers, or stay updated with the latest industry trends and practices"
-              },
-              {
-                icon: Building2,
-                title: "Corporate",
-                description: "Organizations looking to train their workforce with specialized skills in healthcare, analytics, and management domains"
-              }
-            ].map((audience, index) => (
-              <ScrollReveal key={index} delay={index * 100}>
-                <Card 
-                  className="group hover:shadow-2xl hover:border-primary/30 transition-all duration-300 ease-out cursor-default h-full"
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    transition: 'transform 0.3s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-10px) rotateX(5deg) scale(1.02)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0) rotateX(0deg) scale(1)';
-                  }}
-                >
-                  <CardContent className="pt-6">
-                    <audience.icon className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors duration-300">{audience.title}</h3>
-                    <p className="text-muted-foreground">{audience.description}</p>
-                  </CardContent>
-                </Card>
-              </ScrollReveal>
-            ))}
           </div>
         </div>
       </section>
