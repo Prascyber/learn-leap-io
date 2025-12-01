@@ -97,6 +97,14 @@ const CourseCard = ({ title, description, duration, slug, image }: CourseCardPro
             <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
             Internship support
           </li>
+           <li className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
+            Placement assistance
+          </li>
+           <li className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
+            Expereince Letter
+          </li>
         </ul>
       </CardContent>
       <CardFooter>

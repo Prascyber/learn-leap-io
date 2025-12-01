@@ -52,7 +52,7 @@ const Index = () => {
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <Badge variant="secondary" className="text-sm">
-              India's Premier Online Learning Platform
+              India's Premier Learning Platform
             </Badge>
             <p className="text-lg text-muted-foreground mb-4">
               Learn practical, industry-relevant courses with completion certificates and internship support
@@ -121,7 +121,7 @@ const Index = () => {
               <div className="text-sm text-muted-foreground">Lifetime Access</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary">24/7</div>
+              <div className="text-3xl font-bold text-primary">24+ hours</div>
               <div className="text-sm text-muted-foreground">Support</div>
             </div>
           </div>
