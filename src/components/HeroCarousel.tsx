@@ -38,7 +38,7 @@ const HeroCarousel = () => {
         <CarouselContent>
           {courses.map((course) => (
             <CarouselItem key={course.id}>
-              <div className="relative h-[400px] md:h-[500px] lg:h-[600px] w-full overflow-hidden">
+              <div className="relative h-[45vh] md:h-[50vh] w-full overflow-hidden">
                 {/* Course Image with Overlay */}
                 <div className="absolute inset-0">
                   <img
