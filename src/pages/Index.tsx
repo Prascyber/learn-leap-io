@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CourseCard from "@/components/CourseCard";
-import AnimatedBackground from "@/components/AnimatedBackground";
 import ScrollReveal from "@/components/ScrollReveal";
+import HeroCarousel from "@/components/HeroCarousel";
 import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
 import { CheckCircle, Award, BookOpen, Users, TrendingUp, Clock, GraduationCap, Briefcase, Building2 } from "lucide-react";
-import heroImage from "@/assets/hero-education.jpg";
 import Counter from "@/components/Counter";
 
 const Index = () => {
@@ -20,87 +18,24 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
-        {/* Hero Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImage} 
-            alt="Students learning together" 
-            className="w-full h-full object-cover opacity-20 animate-[float_6s_ease-in-out_infinite]"
-            style={{
-              animation: 'float 6s ease-in-out infinite',
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background/95 to-secondary/10" />
-        </div>
-        
-        <style>{`
-          @keyframes float {
-            0%, 100% {
-              transform: translateY(0px) scale(1.05);
-            }
-            50% {
-              transform: translateY(-20px) scale(1.08);
-            }
-          }
-        `}</style>
-        
-        {/* Animated Background */}
-        <AnimatedBackground />
-        
-        <div className="container relative z-10">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <Badge variant="secondary" className="text-sm">
-              India's Premier Online Learning Platform
-            </Badge>
-            <p className="text-lg text-muted-foreground mb-4">
-              Learn practical, industry-relevant courses with completion certificates and internship support
-            </p>
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight animate-fade-in [animation-delay:200ms]">
-              Empowering India's Future Workforce with{" "}
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite] bg-clip-text text-transparent font-extrabold">
-                Job-Ready Skills
-              </span>
-            </h1>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                asChild
-                className="transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
-                style={{
-                  transform: 'translateZ(0)',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(20px) translateY(-4px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(0) translateY(0)';
-                }}
-              >
-                <Link to="/courses">Explore Courses</Link>
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                asChild
-                className="transition-all duration-300 hover:shadow-[0_10px_40px_rgba(234,179,8,0.3)] hover:-translate-y-1"
-                style={{
-                  transform: 'translateZ(0)',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(20px) translateY(-4px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(0) translateY(0)';
-                }}
-              >
-                <Link to="/about">Learn More</Link>
-              </Button>
-            </div>
-          </div>
+      {/* Hero Carousel Section */}
+      <section className="relative">
+        <HeroCarousel />
+      </section>
+
+      {/* Branding Section */}
+      <section className="py-12 bg-muted/50">
+        <div className="container text-center space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold">India's Premier Online Learning Platform</h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Learn practical, industry-relevant courses with completion certificates and internship support
+          </p>
+          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight pt-4">
+            Empowering India's Future Workforce with{" "}
+            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite] bg-clip-text text-transparent font-extrabold">
+              Job-Ready Skills
+            </span>
+          </h3>
         </div>
       </section>
 
