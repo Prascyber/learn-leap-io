@@ -24,13 +24,13 @@ const Index = () => {
       </section>
 
       {/* Branding Section */}
-      <section className="py-12 bg-muted/50">
-        <div className="container text-center space-y-4">
-          <h2 className="text-2xl md:text-3xl font-bold">India's Premier Online Learning Platform</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+      <section className="py-8 sm:py-10 md:py-12 bg-muted/50 px-4">
+        <div className="container text-center space-y-3 sm:space-y-4">
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold px-2">India's Premier Online Learning Platform</h2>
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto px-2">
             Learn practical, industry-relevant courses with completion certificates and internship support
           </p>
-          <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight pt-4">
+          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight pt-2 sm:pt-4 px-2">
             Empowering India's Future Workforce with{" "}
             <span className="bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-[gradient_3s_ease-in-out_infinite] bg-clip-text text-transparent font-extrabold">
               Job-Ready Skills
