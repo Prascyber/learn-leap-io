@@ -20,7 +20,7 @@ export const courses: Course[] = [
     title: "Healthcare Insurance",
     shortDescription: "Learn insurance operations, claims, TPAs, IRDAI guidelines, provider relations, underwriting basics, and analytics.",
     fullDescription: "Master the fundamentals of healthcare insurance operations in India. This comprehensive course covers everything from policy types to claims processing, TPA operations, and regulatory compliance.",
-    duration: "12-16 weeks",
+    duration: "8-12 weeks",
     modules: [
       "Basics of Health Insurance",
       "Policy types and coverage",
@@ -77,7 +77,7 @@ export const courses: Course[] = [
     title: "Healthcare Analytics",
     shortDescription: "Master healthcare data, dashboards, KPIs, data cleaning, visualization, and real datasets.",
     fullDescription: "Become proficient in healthcare data analysis. Learn to work with hospital KPIs, EHR data, create dashboards, and derive actionable insights from healthcare datasets.",
-    duration: "12-16 weeks",
+    duration: "8-10 weeks",
     modules: [
       "Hospital KPIs and metrics",
       "Electronic Health Records (EHR) data",
@@ -130,7 +130,7 @@ export const courses: Course[] = [
     title: "Medical Coding",
     shortDescription: "Master ICD, CPT, HCPCS, procedure coding, claim cycle, and live practice sheets.",
     fullDescription: "Become a certified medical coder. Learn ICD-10, CPT, HCPCS coding systems with extensive practice on real medical records and claims.",
-    duration: "12-16 weeks",
+    duration: "10-14 weeks",
     modules: [
       "ICD-10 coding system",
       "CPT coding procedures",
@@ -232,7 +232,7 @@ export const courses: Course[] = [
     title: "Strategic Management",
     shortDescription: "Learn frameworks to plan, analyze, and execute strategies in any organization.",
     fullDescription: "Master strategic thinking and planning. Learn industry-standard frameworks like SWOT, PESTLE, and Porter's Five Forces to drive organizational success.",
-    duration: "12-16 weeks",
+    duration: "6-8 weeks",
     modules: [
       "Strategic thinking fundamentals",
       "SWOT analysis",
@@ -281,7 +281,7 @@ export const courses: Course[] = [
     title: "Human Resource Management",
     shortDescription: "Learn HR ops, recruitment, onboarding, payroll basics, training & development.",
     fullDescription: "Become an HR professional. Master recruitment, employee management, payroll basics, and organizational development practices.",
-    duration: "12-16 weeks",
+    duration: "8-10 weeks",
     modules: [
       "HR fundamentals",
       "Recruitment and selection",
@@ -379,7 +379,7 @@ export const courses: Course[] = [
     title: "HR Analytics",
     shortDescription: "Learn workforce analytics, HR metrics, data-driven decision making, and predictive analytics.",
     fullDescription: "Combine HR expertise with data analytics. Learn to measure, analyze, and optimize workforce performance using data-driven insights.",
-    duration: "12-16 weeks",
+    duration: "8-10 weeks",
     modules: [
       "HR metrics and KPIs",
       "Workforce analytics",
