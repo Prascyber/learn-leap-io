@@ -33,8 +33,8 @@ const Navigation = () => {
   return <nav className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="EdHere Academy" className="h-14 w-auto border-0 rounded-none" />
-        </Link>
+          <img src={logo} alt="EdHere Academy" className="h-28 w-auto border-0 rounded-none" />
+        </Link> 
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
