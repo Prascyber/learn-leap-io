@@ -26,7 +26,7 @@ const Index = () => {
       {/* Branding Section */}
       <section className="py-8 sm:py-10 md:py-12 bg-muted/50 px-4">
         <div className="container text-center space-y-3 sm:space-y-4">
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold px-2">India's Premier Online Learning Platform</h2>
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold px-2">India's Premier  Learning Platform</h2>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto px-2">
             Learn practical, industry-relevant courses with completion certificates and internship support
           </p>

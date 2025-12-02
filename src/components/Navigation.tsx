@@ -30,7 +30,7 @@ const Navigation = () => {
     path: "/contact",
     label: "Contact"
   }];
-  return <nav className="sticky top-0 z-50 border-b border-border/50 bg-transparent backdrop-blur-sm">
+  return <nav className="sticky top-0 z-50 border-b border-border/50 bg-white">
       <div className="container flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center">
           <img src={logo} alt="EdHere Academy" className="h-20 w-auto border-0 rounded-none" />
