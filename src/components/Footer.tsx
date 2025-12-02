@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -8,9 +9,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2 font-bold text-lg">
-              <GraduationCap className="h-5 w-5 text-primary" />
-              <span>EdHere Academy</span>
+            <Link to="/" className="flex items-center">
+              <img src={logo} alt="EdHere Academy" className="h-12 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground">
               Empowering India's Future Workforce with Job-Ready Skills
