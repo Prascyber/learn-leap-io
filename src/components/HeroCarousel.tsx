@@ -5,6 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
 import type { CarouselApi } from "@/components/ui/carousel";
+import whoShouldChooseBanner from "@/assets/who-should-choose-banner.jpg";
 
 const HeroCarousel = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -32,14 +33,54 @@ const HeroCarousel = () => {
     "hr-analytics": "Leverage Data for HR Decision Making"
   };
 
+  const totalSlides = courses.length + 1; // courses + who should choose us slide
+
   return (
     <div className="relative w-full">
       <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
         <CarouselContent>
+          {/* Who Should Choose Us Slide */}
+          <CarouselItem>
+            <div className="relative h-[40vh] sm:h-[45vh] md:h-[50vh] w-full overflow-hidden">
+              <div className="absolute inset-0">
+                <img
+                  src={whoShouldChooseBanner}
+                  alt="Students, Professionals and Corporate learners"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
+              </div>
+              <div className="relative h-full container flex items-center px-4 sm:px-6">
+                <div className="max-w-2xl space-y-4 sm:space-y-6 animate-fade-in">
+                  <div className="space-y-2 sm:space-y-4">
+                    <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                      Who Should Choose Us
+                    </h2>
+                    <p className="text-base sm:text-lg md:text-2xl text-muted-foreground">
+                      Students, Professionals & Corporate Teams
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="px-4 py-2 bg-primary/90 text-primary-foreground rounded-full text-sm sm:text-base font-medium">Students</span>
+                    <span className="px-4 py-2 bg-primary/90 text-primary-foreground rounded-full text-sm sm:text-base font-medium">Professionals</span>
+                    <span className="px-4 py-2 bg-primary/90 text-primary-foreground rounded-full text-sm sm:text-base font-medium">Corporate</span>
+                  </div>
+                  <Button 
+                    size="lg" 
+                    asChild
+                    className="text-base sm:text-lg px-6 py-5 sm:px-8 sm:py-6 min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
+                  >
+                    <Link to="/courses">Explore Courses</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </CarouselItem>
+
+          {/* Course Slides */}
           {courses.map((course) => (
             <CarouselItem key={course.id}>
               <div className="relative h-[40vh] sm:h-[45vh] md:h-[50vh] w-full overflow-hidden">
-                {/* Course Image with Overlay */}
                 <div className="absolute inset-0">
                   <img
                     src={courseImages[course.slug]}
@@ -48,8 +89,6 @@ const HeroCarousel = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
                 </div>
-
-                {/* Content */}
                 <div className="relative h-full container flex items-center px-4 sm:px-6">
                   <div className="max-w-2xl space-y-4 sm:space-y-6 animate-fade-in">
                     <div className="space-y-2 sm:space-y-4">
@@ -79,7 +118,7 @@ const HeroCarousel = () => {
 
       {/* Carousel Dots Indicator */}
       <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-        {courses.map((_, index) => (
+        {Array.from({ length: totalSlides }).map((_, index) => (
           <button
             key={index}
             onClick={() => api?.scrollTo(index)}
