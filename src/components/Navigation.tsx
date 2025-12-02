@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, Menu, X, User, LogOut } from "lucide-react";
+import { Menu, X, User, LogOut } from "lucide-react";
+import logo from "@/assets/logo.png";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -33,9 +34,8 @@ const Navigation = () => {
   return (
     <nav className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-bold text-xl">
-          <GraduationCap className="h-6 w-6 text-primary" />
-          <span>EdHere Academy</span>
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="EdHere Academy" className="h-10 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
