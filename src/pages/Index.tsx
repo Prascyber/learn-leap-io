@@ -10,7 +10,6 @@ import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
 import { CheckCircle, Award, BookOpen, Users, TrendingUp, Clock, GraduationCap, Briefcase, Building2 } from "lucide-react";
 import Counter from "@/components/Counter";
-import whoShouldChooseBanner from "@/assets/who-should-choose-banner.jpg";
 
 const Index = () => {
   const featuredCourses = courses.slice(0, 3);
@@ -75,24 +74,6 @@ const Index = () => {
               </p>
             </div>
           </ScrollReveal>
-          
-          {/* Banner Image */}
-          <ScrollReveal>
-            <div className="relative w-full mb-12 rounded-xl overflow-hidden">
-              <img 
-                src={whoShouldChooseBanner} 
-                alt="Students, Professionals and Corporate learners" 
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4 sm:gap-8 md:gap-16">
-                <span className="px-4 py-2 bg-primary/90 text-primary-foreground rounded-full text-sm sm:text-base font-medium">Students</span>
-                <span className="px-4 py-2 bg-primary/90 text-primary-foreground rounded-full text-sm sm:text-base font-medium">Professionals</span>
-                <span className="px-4 py-2 bg-primary/90 text-primary-foreground rounded-full text-sm sm:text-base font-medium">Corporate</span>
-              </div>
-            </div>
-          </ScrollReveal>
-          
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
