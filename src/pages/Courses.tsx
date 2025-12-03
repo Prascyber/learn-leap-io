@@ -33,6 +33,8 @@ const Courses = () => {
                 duration={course.duration}
                 slug={course.slug}
                 image={courseImages[course.slug]}
+                price={course.price}
+                originalPrice={course.originalPrice}
               />
             ))}
           </div>
