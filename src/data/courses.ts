@@ -5,6 +5,8 @@ export interface Course {
   shortDescription: string;
   fullDescription: string;
   duration: string;
+  price: number;
+  originalPrice: number;
   modules: string[];
   whoShouldTake: string[];
   whatYouWillLearn: string[];
@@ -21,6 +23,8 @@ export const courses: Course[] = [
     shortDescription: "Learn insurance operations, claims, TPAs, IRDAI guidelines, provider relations, underwriting basics, and analytics.",
     fullDescription: "Master the fundamentals of healthcare insurance operations in India. This comprehensive course covers everything from policy types to claims processing, TPA operations, and regulatory compliance.",
     duration: "12-16 weeks",
+    price: 4999,
+    originalPrice: 7999,
     modules: [
       "Basics of Health Insurance",
       "Policy types and coverage",
@@ -78,6 +82,8 @@ export const courses: Course[] = [
     shortDescription: "Master healthcare data, dashboards, KPIs, data cleaning, visualization, and real datasets.",
     fullDescription: "Become proficient in healthcare data analysis. Learn to work with hospital KPIs, EHR data, create dashboards, and derive actionable insights from healthcare datasets.",
     duration: "12-16 weeks",
+    price: 5499,
+    originalPrice: 8999,
     modules: [
       "Hospital KPIs and metrics",
       "Electronic Health Records (EHR) data",
@@ -131,6 +137,8 @@ export const courses: Course[] = [
     shortDescription: "Master ICD, CPT, HCPCS, procedure coding, claim cycle, and live practice sheets.",
     fullDescription: "Become a certified medical coder. Learn ICD-10, CPT, HCPCS coding systems with extensive practice on real medical records and claims.",
     duration: "12-16 weeks",
+    price: 5999,
+    originalPrice: 9999,
     modules: [
       "ICD-10 coding system",
       "CPT coding procedures",
@@ -184,6 +192,8 @@ export const courses: Course[] = [
     shortDescription: "Learn hospital information systems, data management, reporting, and healthcare IT fundamentals.",
     fullDescription: "Master healthcare information systems and hospital data management. Learn HMIS software, reporting, and IT infrastructure in healthcare settings.",
     duration: "12-16 weeks",
+    price: 4499,
+    originalPrice: 7499,
     modules: [
       "HMIS fundamentals",
       "Hospital information systems",
@@ -233,6 +243,8 @@ export const courses: Course[] = [
     shortDescription: "Learn frameworks to plan, analyze, and execute strategies in any organization.",
     fullDescription: "Master strategic thinking and planning. Learn industry-standard frameworks like SWOT, PESTLE, and Porter's Five Forces to drive organizational success.",
     duration: "12-16 weeks",
+    price: 4999,
+    originalPrice: 7999,
     modules: [
       "Strategic thinking fundamentals",
       "SWOT analysis",
@@ -282,6 +294,8 @@ export const courses: Course[] = [
     shortDescription: "Learn HR ops, recruitment, onboarding, payroll basics, training & development.",
     fullDescription: "Become an HR professional. Master recruitment, employee management, payroll basics, and organizational development practices.",
     duration: "12-16 weeks",
+    price: 4499,
+    originalPrice: 6999,
     modules: [
       "HR fundamentals",
       "Recruitment and selection",
@@ -331,6 +345,8 @@ export const courses: Course[] = [
     shortDescription: "Master quality frameworks, audits, Six Sigma basics, and continuous improvement methodologies.",
     fullDescription: "Learn quality management systems and improvement methodologies. Master audits, quality frameworks, and continuous improvement techniques.",
     duration: "12-16 weeks",
+    price: 4999,
+    originalPrice: 7999,
     modules: [
       "Quality fundamentals",
       "ISO standards",
@@ -380,6 +396,8 @@ export const courses: Course[] = [
     shortDescription: "Learn workforce analytics, HR metrics, data-driven decision making, and predictive analytics.",
     fullDescription: "Combine HR expertise with data analytics. Learn to measure, analyze, and optimize workforce performance using data-driven insights.",
     duration: "12-16 weeks",
+    price: 5499,
+    originalPrice: 8999,
     modules: [
       "HR metrics and KPIs",
       "Workforce analytics",
