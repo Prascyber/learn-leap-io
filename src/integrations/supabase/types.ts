@@ -14,6 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
+      cart_items: {
+        Row: {
+          added_at: string | null
+          course_id: string
+          course_slug: string
+          course_title: string
+          id: string
+          price: number
+          user_id: string
+        }
+        Insert: {
+          added_at?: string | null
+          course_id: string
+          course_slug: string
+          course_title: string
+          id?: string
+          price?: number
+          user_id: string
+        }
+        Update: {
+          added_at?: string | null
+          course_id?: string
+          course_slug?: string
+          course_title?: string
+          id?: string
+          price?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      coupons: {
+        Row: {
+          code: string
+          created_at: string | null
+          discount_percent: number
+          id: string
+          is_active: boolean | null
+          max_uses: number | null
+          uses_count: number | null
+          valid_from: string | null
+          valid_until: string | null
+        }
+        Insert: {
+          code: string
+          created_at?: string | null
+          discount_percent: number
+          id?: string
+          is_active?: boolean | null
+          max_uses?: number | null
+          uses_count?: number | null
+          valid_from?: string | null
+          valid_until?: string | null
+        }
+        Update: {
+          code?: string
+          created_at?: string | null
+          discount_percent?: number
+          id?: string
+          is_active?: boolean | null
+          max_uses?: number | null
+          uses_count?: number | null
+          valid_from?: string | null
+          valid_until?: string | null
+        }
+        Relationships: []
+      }
       course_enrollments: {
         Row: {
           course_id: string
@@ -51,6 +117,92 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      order_items: {
+        Row: {
+          course_id: string
+          course_slug: string
+          course_title: string
+          created_at: string | null
+          id: string
+          order_id: string
+          price: number
+        }
+        Insert: {
+          course_id: string
+          course_slug: string
+          course_title: string
+          created_at?: string | null
+          id?: string
+          order_id: string
+          price: number
+        }
+        Update: {
+          course_id?: string
+          course_slug?: string
+          course_title?: string
+          created_at?: string | null
+          id?: string
+          order_id?: string
+          price?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          coupon_code: string | null
+          coupon_discount: number | null
+          created_at: string | null
+          discount: number | null
+          id: string
+          order_number: string
+          payment_status: string | null
+          razorpay_order_id: string | null
+          razorpay_payment_id: string | null
+          subtotal: number
+          total: number
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          coupon_code?: string | null
+          coupon_discount?: number | null
+          created_at?: string | null
+          discount?: number | null
+          id?: string
+          order_number: string
+          payment_status?: string | null
+          razorpay_order_id?: string | null
+          razorpay_payment_id?: string | null
+          subtotal: number
+          total: number
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          coupon_code?: string | null
+          coupon_discount?: number | null
+          created_at?: string | null
+          discount?: number | null
+          id?: string
+          order_number?: string
+          payment_status?: string | null
+          razorpay_order_id?: string | null
+          razorpay_payment_id?: string | null
+          subtotal?: number
+          total?: number
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
