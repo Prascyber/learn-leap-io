@@ -64,7 +64,7 @@ const Index = () => {
       </section>
 
       {/* Who Should Choose Us */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <div className="container">
           <ScrollReveal>
             <div className="text-center mb-12">
@@ -116,10 +116,10 @@ const Index = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Featured Courses */}
-      <section className="py-20 bg-muted/30">
+      {/* <section className="py-20 bg-muted/30">
         <div className="container">
           <ScrollReveal>
             <div className="text-center mb-12">
@@ -148,7 +148,7 @@ const Index = () => {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Why Choose Us */}
       <section className="py-20">
@@ -227,7 +227,7 @@ const Index = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">Student Success Stories</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Hear from students who transformed their careers with SkillEdge Academy
+                Hear from students who transformed their careers with EdHere Academy
               </p>
             </div>
           </ScrollReveal>

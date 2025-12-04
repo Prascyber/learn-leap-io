@@ -73,7 +73,7 @@ const CourseCard = ({ title, description, duration, slug, image }: CourseCardPro
         <div className="flex items-start justify-between gap-2 mb-2">
           <Badge variant="secondary" className="flex items-center gap-1">
             <Award className="h-3 w-3" />
-            Certificate
+            Completion Certificate
           </Badge>
           <Badge variant="outline" className="flex items-center gap-1">
             <Clock className="h-3 w-3" />
@@ -96,6 +96,10 @@ const CourseCard = ({ title, description, duration, slug, image }: CourseCardPro
           <li className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
             Internship support
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
+            Completion certificate
           </li>
         </ul>
       </CardContent>

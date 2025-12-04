@@ -14,7 +14,7 @@ const About = () => {
       <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5 border-b">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h1 className="text-4xl lg:text-5xl font-bold">About SkillEdge Academy</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold">About EdHere Academy</h1>
             <p className="text-xl text-muted-foreground">
               Empowering India's workforce with practical, job-ready skills in healthcare and management
             </p>

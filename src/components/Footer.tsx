@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center">
-              <img src={logo} alt="EdHere Academy" className="h-16 w-auto" />
+              <img src={logo} alt="EdHere Academy" className="h-20 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground">
               Empowering India's Future Workforce with Job-Ready Skills
@@ -82,7 +82,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} SkillEdge Academy. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} EdHere Academy. All rights reserved.</p>
         </div>
       </div>
     </footer>
