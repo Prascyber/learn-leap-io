@@ -6,14 +6,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { courses } from "@/data/courses";
-import { Award, Clock, CheckCircle, Users, TrendingUp } from "lucide-react";
+import { Award, Clock, CheckCircle, Users, TrendingUp, ShoppingCart, Sparkles, IndianRupee } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
 
 const CourseDetail = () => {
   const { slug } = useParams();
   const course = courses.find((c) => c.slug === slug);
   const { user } = useAuth();
+  const { addToCart, isInCart } = useCart();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -26,12 +28,36 @@ const CourseDetail = () => {
       });
       navigate("/auth");
     } else {
-      // TODO: Integrate Razorpay payment
-      toast({
-        title: "Coming Soon",
-        description: "Payment integration will be available soon",
-      });
+      // Add to cart and go to checkout
+      if (!isInCart(course!.id)) {
+        addToCart({
+          id: course!.id,
+          title: course!.title,
+          slug: course!.slug,
+          price: course!.price,
+        });
+      }
+      navigate("/checkout");
     }
+  };
+
+  const handleAddToCart = () => {
+    if (!user) {
+      toast({
+        title: "Login Required",
+        description: "Please log in to add items to cart",
+        variant: "destructive",
+      });
+      navigate("/auth");
+      return;
+    }
+    
+    addToCart({
+      id: course!.id,
+      title: course!.title,
+      slug: course!.slug,
+      price: course!.price,
+    });
   };
 
   if (!course) {
@@ -51,6 +77,9 @@ const CourseDetail = () => {
     );
   }
 
+  const discountPercent = Math.round(((course.originalPrice - course.price) / course.originalPrice) * 100);
+  const alreadyInCart = isInCart(course.id);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -59,7 +88,7 @@ const CourseDetail = () => {
       <section className="py-16 lg:py-24 bg-gradient-to-br from-primary/10 via-background to-secondary/10 border-b">
         <div className="container">
           <div className="max-w-4xl mx-auto space-y-6">
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 animate-fade-in">
               <Badge variant="secondary" className="flex items-center gap-1">
                 <Award className="h-3 w-3" />
                 Certificate Included
@@ -68,15 +97,45 @@ const CourseDetail = () => {
                 <Clock className="h-3 w-3" />
                 {course.duration}
               </Badge>
+              <Badge className="bg-green-500/90 hover:bg-green-500 flex items-center gap-1">
+                <Sparkles className="h-3 w-3" />
+                {discountPercent}% OFF
+              </Badge>
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold">{course.title}</h1>
-            <p className="text-xl text-muted-foreground">{course.fullDescription}</p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" onClick={handleEnrollClick}>
+            <h1 className="text-4xl lg:text-5xl font-bold animate-fade-in">{course.title}</h1>
+            <p className="text-xl text-muted-foreground animate-fade-in">{course.fullDescription}</p>
+            
+            {/* Price Display */}
+            <div className="flex items-center gap-4 animate-fade-in">
+              <div className="flex items-center">
+                <IndianRupee className="h-8 w-8 text-primary" />
+                <span className="text-4xl font-bold text-primary">{course.price.toLocaleString()}</span>
+              </div>
+              <div className="flex items-center text-muted-foreground line-through">
+                <IndianRupee className="h-5 w-5" />
+                <span className="text-xl">{course.originalPrice.toLocaleString()}</span>
+              </div>
+              <Badge variant="destructive" className="text-sm">Save ₹{(course.originalPrice - course.price).toLocaleString()}</Badge>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in">
+              <Button 
+                size="lg" 
+                onClick={handleEnrollClick}
+                className="gap-2 group hover:scale-105 transition-all duration-300 hover:shadow-lg"
+              >
+                <Sparkles className="h-5 w-5 group-hover:animate-pulse" />
                 Enroll Now
               </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link to="/contact">Contact Us</Link>
+              <Button 
+                size="lg" 
+                variant={alreadyInCart ? "secondary" : "outline"}
+                onClick={handleAddToCart}
+                disabled={alreadyInCart}
+                className="gap-2 hover:scale-105 transition-all duration-300"
+              >
+                <ShoppingCart className="h-5 w-5" />
+                {alreadyInCart ? "Added to Cart" : "Add to Cart"}
               </Button>
             </div>
           </div>
@@ -90,12 +149,12 @@ const CourseDetail = () => {
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-12">
               {/* Who Should Take This Course */}
-              <div>
+              <div className="animate-fade-in">
                 <h2 className="text-2xl font-bold mb-4">Who Should Take This Course</h2>
                 <ul className="space-y-3">
                   {course.whoShouldTake.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <li key={index} className="flex items-start gap-3 group">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -103,12 +162,12 @@ const CourseDetail = () => {
               </div>
 
               {/* What You Will Learn */}
-              <div>
+              <div className="animate-fade-in">
                 <h2 className="text-2xl font-bold mb-4">What You Will Learn</h2>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {course.whatYouWillLearn.map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <div key={index} className="flex items-start gap-3 group">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
                       <span>{item}</span>
                     </div>
                   ))}
@@ -116,14 +175,14 @@ const CourseDetail = () => {
               </div>
 
               {/* Course Curriculum */}
-              <div>
+              <div className="animate-fade-in">
                 <h2 className="text-2xl font-bold mb-4">Course Curriculum</h2>
                 <div className="space-y-2">
                   {course.modules.map((module, index) => (
-                    <Card key={index} className="group hover:shadow-lg hover:scale-105 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
+                    <Card key={index} className="group hover:shadow-lg hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                       <CardContent className="py-4">
                         <div className="flex items-center gap-3">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-semibold">
+                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground text-sm font-semibold group-hover:scale-110 transition-transform">
                             {index + 1}
                           </div>
                           <span className="font-medium">{module}</span>
@@ -135,14 +194,14 @@ const CourseDetail = () => {
               </div>
 
               {/* Benefits */}
-              <div>
+              <div className="animate-fade-in">
                 <h2 className="text-2xl font-bold mb-4">Course Benefits</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {course.benefits.map((benefit, index) => (
                     <Card key={index} className="group hover:shadow-lg hover:scale-105 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                       <CardContent className="pt-6">
                         <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
                           <span>{benefit}</span>
                         </div>
                       </CardContent>
@@ -152,12 +211,12 @@ const CourseDetail = () => {
               </div>
 
               {/* FAQs */}
-              <div>
+              <div className="animate-fade-in">
                 <h2 className="text-2xl font-bold mb-4">Frequently Asked Questions</h2>
                 <Accordion type="single" collapsible className="w-full">
                   {course.faqs.map((faq, index) => (
                     <AccordionItem key={index} value={`item-${index}`}>
-                      <AccordionTrigger>{faq.question}</AccordionTrigger>
+                      <AccordionTrigger className="hover:text-primary transition-colors">{faq.question}</AccordionTrigger>
                       <AccordionContent>{faq.answer}</AccordionContent>
                     </AccordionItem>
                   ))}
@@ -167,11 +226,23 @@ const CourseDetail = () => {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              <Card className="sticky top-20 group hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-out">
-                <CardHeader>
-                  <CardTitle>Course Highlights</CardTitle>
+              <Card className="sticky top-24 group hover:shadow-2xl transition-all duration-300 ease-out border-primary/20">
+                <CardHeader className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-t-lg">
+                  <CardTitle className="flex items-center gap-2">
+                    <Sparkles className="h-5 w-5 text-primary" />
+                    Course Highlights
+                  </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-6">
+                  {/* Price in Sidebar */}
+                  <div className="text-center pb-4 border-b">
+                    <div className="flex items-center justify-center gap-2">
+                      <span className="text-3xl font-bold text-primary">₹{course.price.toLocaleString()}</span>
+                      <span className="text-lg text-muted-foreground line-through">₹{course.originalPrice.toLocaleString()}</span>
+                    </div>
+                    <Badge variant="destructive" className="mt-2">{discountPercent}% OFF - Limited Time</Badge>
+                  </div>
+                  
                   <div className="flex items-start gap-3">
                     <Clock className="h-5 w-5 text-primary mt-0.5" />
                     <div>
@@ -200,13 +271,26 @@ const CourseDetail = () => {
                       <div className="text-sm text-muted-foreground">Lifetime access</div>
                     </div>
                   </div>
-                  <Button 
-                    className="w-full mt-4 group-hover:scale-110 transition-transform duration-300 ease-out" 
-                    size="lg"
-                    onClick={handleEnrollClick}
-                  >
-                    Enroll Now
-                  </Button>
+                  
+                  <div className="space-y-3 pt-4">
+                    <Button 
+                      className="w-full gap-2 h-12 text-lg group" 
+                      size="lg"
+                      onClick={handleEnrollClick}
+                    >
+                      <Sparkles className="h-5 w-5 group-hover:animate-pulse" />
+                      Enroll Now
+                    </Button>
+                    <Button 
+                      className="w-full gap-2" 
+                      variant={alreadyInCart ? "secondary" : "outline"}
+                      onClick={handleAddToCart}
+                      disabled={alreadyInCart}
+                    >
+                      <ShoppingCart className="h-4 w-4" />
+                      {alreadyInCart ? "Added to Cart" : "Add to Cart"}
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </div>

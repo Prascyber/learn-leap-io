@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Clock, Award } from "lucide-react";
+import { Clock, Award, IndianRupee, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useRef } from "react";
 
@@ -11,9 +11,11 @@ interface CourseCardProps {
   duration: string;
   slug: string;
   image?: string;
+  price?: number;
+  originalPrice?: number;
 }
 
-const CourseCard = ({ title, description, duration, slug, image }: CourseCardProps) => {
+const CourseCard = ({ title, description, duration, slug, image, price, originalPrice }: CourseCardProps) => {
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -82,6 +84,18 @@ const CourseCard = ({ title, description, duration, slug, image }: CourseCardPro
         </div>
         <CardTitle className="text-xl">{title}</CardTitle>
         <CardDescription className="line-clamp-2">{description}</CardDescription>
+        {price && originalPrice && (
+          <div className="flex items-center gap-2 mt-2">
+            <div className="flex items-center text-primary font-bold">
+              <IndianRupee className="h-4 w-4" />
+              <span>{price.toLocaleString()}</span>
+            </div>
+            <span className="text-sm text-muted-foreground line-through">₹{originalPrice.toLocaleString()}</span>
+            <Badge className="bg-green-500/90 text-xs">
+              {Math.round(((originalPrice - price) / originalPrice) * 100)}% OFF
+            </Badge>
+          </div>
+        )}
       </CardHeader>
       <CardContent className="flex-1">
         <ul className="space-y-2 text-sm text-muted-foreground">
