@@ -82,8 +82,8 @@ export const courses: Course[] = [
     shortDescription: "Master healthcare data, dashboards, KPIs, data cleaning, visualization, and real datasets.",
     fullDescription: "Become proficient in healthcare data analysis. Learn to work with hospital KPIs, EHR data, create dashboards, and derive actionable insights from healthcare datasets.",
     duration: "12-16 weeks",
-    price: 5499,
-    originalPrice: 8999,
+    price: 1,
+    originalPrice: 10,
     modules: [
       "Hospital KPIs and metrics",
       "Electronic Health Records (EHR) data",
