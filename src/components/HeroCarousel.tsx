@@ -99,13 +99,23 @@ const HeroCarousel = () => {
                         {courseBenefits[course.slug as keyof typeof courseBenefits]}
                       </p>
                     </div>
-                    <Button 
-                      size="lg" 
-                      asChild
-                      className="text-base sm:text-lg px-6 py-5 sm:px-8 sm:py-6 min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
-                    >
-                      <Link to={`/courses/${course.slug}`}>Enroll Now</Link>
-                    </Button>
+                    <div className="flex flex-wrap gap-3">
+                      <Button 
+                        size="lg" 
+                        asChild
+                        className="text-base sm:text-lg px-6 py-5 sm:px-8 sm:py-6 min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
+                      >
+                        <Link to={`/courses/${course.slug}`}>Enroll Now</Link>
+                      </Button>
+                      <Button 
+                        size="lg" 
+                        variant="outline"
+                        asChild
+                        className="text-base sm:text-lg px-6 py-5 sm:px-8 sm:py-6 min-h-[48px] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-background/80 backdrop-blur-sm"
+                      >
+                        <Link to={`/who-should-choose/${course.slug}`}>Who Should Choose?</Link>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
