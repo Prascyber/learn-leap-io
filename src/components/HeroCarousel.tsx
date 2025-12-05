@@ -41,7 +41,7 @@ const HeroCarousel = () => {
         <CarouselContent>
           {/* Who Should Choose Us Slide */}
           <CarouselItem>
-            <div className="relative h-[40vh] sm:h-[45vh] md:h-[55vh] w-full overflow-hidden">
+            <div className="relative h-[36vh] sm:h-[40vh] md:h-[50vh] w-full overflow-hidden">
               {/* Abstract Background Design */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20">
                 {/* Decorative shapes */}
@@ -68,7 +68,7 @@ const HeroCarousel = () => {
                     </div>
                     
                     {/* CTA Buttons */}
-                    {/* <div className="space-y-3"> */}
+                    <div className="space-x-3">
                       <Button 
                         size="lg"
                         asChild
@@ -79,7 +79,7 @@ const HeroCarousel = () => {
                           Students & Professionals
                         </Link>
                       </Button>
-                      <div className="space-y-1">
+                      {/* <div className="space-x-10"> */}
                       <Button 
                         size="lg"
                         variant="secondary"

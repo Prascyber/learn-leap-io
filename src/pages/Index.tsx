@@ -48,12 +48,12 @@ const Index = () => {
               <div className="text-sm text-muted-foreground">Professional Courses</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary">100%</div>
+              <div className="text-3xl font-bold text-primary">Completion</div>
               <div className="text-sm text-muted-foreground">Certification</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary">∞</div>
-              <div className="text-sm text-muted-foreground">Lifetime Access</div>
+              <div className="text-3xl font-bold text-primary">All</div>
+              <div className="text-sm text-muted-foreground">Session Recording Available</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-primary">24/7</div>

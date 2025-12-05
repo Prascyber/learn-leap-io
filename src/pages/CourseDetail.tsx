@@ -268,7 +268,7 @@ const CourseDetail = () => {
                     <TrendingUp className="h-5 w-5 text-primary mt-0.5" />
                     <div>
                       <div className="font-medium">Access</div>
-                      <div className="text-sm text-muted-foreground">Lifetime access</div>
+                      <div className="text-sm text-muted-foreground">1 year Validity</div>
                     </div>
                   </div>
                   
