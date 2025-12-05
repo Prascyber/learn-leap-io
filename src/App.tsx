@@ -14,6 +14,7 @@ import Policies from "./pages/Policies";
 import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import Checkout from "./pages/Checkout";
+import WhoShouldChoose from "./pages/WhoShouldChoose";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
               <Route path="/auth" element={<Auth />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/who-should-choose/:slug" element={<WhoShouldChoose />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
