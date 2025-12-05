@@ -6,7 +6,7 @@ import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
 import type { CarouselApi } from "@/components/ui/carousel";
 import whoShouldChooseBanner from "@/assets/who-should-choose-banner.jpg";
-import { GraduationCap, Briefcase, Building2, CheckCircle } from "lucide-react";
+import { GraduationCap, Building2, CheckCircle } from "lucide-react";
 
 const HeroCarousel = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -66,29 +66,26 @@ const HeroCarousel = () => {
                     
                     {/* CTA Buttons */}
                     <div className="space-y-3">
-                      <div className="flex flex-wrap gap-3">
-                        <Button 
-                          size="lg"
-                          className="min-h-[44px] px-5 sm:px-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-                        >
+                      <Button 
+                        size="lg"
+                        asChild
+                        className="min-h-[44px] px-6 sm:px-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+                      >
+                        <Link to="/students-professionals">
                           <GraduationCap className="w-4 h-4 mr-2" />
-                          Students
-                        </Button>
-                        <Button 
-                          size="lg"
-                          className="min-h-[44px] px-5 sm:px-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-                        >
-                          <Briefcase className="w-4 h-4 mr-2" />
-                          Professionals
-                        </Button>
-                      </div>
+                          Students & Professionals
+                        </Link>
+                      </Button>
                       <Button 
                         size="lg"
                         variant="secondary"
+                        asChild
                         className="min-h-[44px] px-5 sm:px-6 bg-primary/20 hover:bg-primary/30 text-foreground transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
                       >
-                        <Building2 className="w-4 h-4 mr-2" />
-                        Corporate
+                        <Link to="/corporate">
+                          <Building2 className="w-4 h-4 mr-2" />
+                          Corporate
+                        </Link>
                       </Button>
                     </div>
 
