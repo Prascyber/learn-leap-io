@@ -5,7 +5,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
 import type { CarouselApi } from "@/components/ui/carousel";
-import whoShouldChooseBanner from "@/assets/who-should-choose-banner.jpg";
 import { GraduationCap, Building2, CheckCircle } from "lucide-react";
 
 const HeroCarousel = () => {
@@ -43,13 +42,17 @@ const HeroCarousel = () => {
           {/* Who Should Choose Us Slide */}
           <CarouselItem>
             <div className="relative h-[40vh] sm:h-[45vh] md:h-[55vh] w-full overflow-hidden">
-              <div className="absolute inset-0">
-                <img
-                  src={whoShouldChooseBanner}
-                  alt="Students, Professionals and Corporate learners"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-background/98 via-background/85 to-background/50" />
+              {/* Abstract Background Design */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-secondary/20">
+                {/* Decorative shapes */}
+                <div className="absolute top-10 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-10 left-20 w-80 h-80 bg-accent/15 rounded-full blur-3xl" />
+                <div className="absolute top-1/2 right-1/3 w-40 h-40 bg-primary/5 rounded-full blur-2xl" />
+                {/* Grid pattern overlay */}
+                <div className="absolute inset-0 opacity-[0.03]" style={{
+                  backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
+                  backgroundSize: '50px 50px'
+                }} />
               </div>
               <div className="relative h-full container flex items-center px-4 sm:px-6">
                 <div className="w-full flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12 animate-fade-in">
