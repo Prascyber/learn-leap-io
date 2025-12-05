@@ -17,7 +17,7 @@ const HeroCarousel = () => {
 
     const intervalId = setInterval(() => {
       api.scrollNext();
-    }, 5000);
+    }, 50000);
 
     return () => clearInterval(intervalId);
   }, [api]);
@@ -68,7 +68,7 @@ const HeroCarousel = () => {
                     </div>
                     
                     {/* CTA Buttons */}
-                    <div className="space-y-3">
+                    {/* <div className="space-y-3"> */}
                       <Button 
                         size="lg"
                         asChild
@@ -79,6 +79,7 @@ const HeroCarousel = () => {
                           Students & Professionals
                         </Link>
                       </Button>
+                      <div className="space-y-1">
                       <Button 
                         size="lg"
                         variant="secondary"
