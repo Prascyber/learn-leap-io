@@ -109,9 +109,9 @@ const HeroCarousel = () => {
                       </Button>
                       <Button 
                         size="lg" 
-                        variant="outline"
+                        variant="secondary"
                         asChild
-                        className="text-base sm:text-lg px-6 py-5 sm:px-8 sm:py-6 min-h-[48px] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-background/80 backdrop-blur-sm"
+                        className="text-base sm:text-lg px-6 py-5 sm:px-8 sm:py-6 min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.4)] hover:-translate-y-1 bg-primary/90 text-primary-foreground hover:bg-primary"
                       >
                         <Link to={`/who-should-choose/${course.slug}`}>Who Should Choose?</Link>
                       </Button>

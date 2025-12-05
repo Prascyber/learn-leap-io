@@ -68,7 +68,7 @@ const WhoShouldChoose = () => {
         <div className="container mx-auto">
           <ScrollReveal>
             <Button variant="ghost" asChild className="mb-6 group">
-              <Link to={`/courses/${slug}`}>
+              <Link to={`/course/${slug}`}>
                 <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
                 Back to Course
               </Link>
@@ -126,7 +126,7 @@ const WhoShouldChoose = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button size="lg" asChild className="px-8">
-                <Link to={`/courses/${slug}`}>Enroll Now</Link>
+                <Link to={`/course/${slug}`}>Enroll Now</Link>
               </Button>
               <Button size="lg" variant="outline" asChild className="px-8">
                 <Link to="/courses">Explore All Courses</Link>
