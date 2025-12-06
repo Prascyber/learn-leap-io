@@ -1,6 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { courses } from "@/data/courses";
+import { whoShouldChooseData } from "@/data/whoShouldChooseData";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, CheckCircle, Users, Briefcase, GraduationCap } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -9,6 +11,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 const WhoShouldChoose = () => {
   const { slug } = useParams();
   const course = courses.find((c) => c.slug === slug);
+  const whoShouldData = whoShouldChooseData.find((w) => w.courseSlug === slug);
 
   if (!course) {
     return (
@@ -86,6 +89,37 @@ const WhoShouldChoose = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Target Audience Section */}
+      {whoShouldData && (
+        <section className="py-12 sm:py-16 bg-muted/30">
+          <div className="container mx-auto px-4 sm:px-6">
+            <ScrollReveal>
+              <div className="text-center mb-10">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+                  Ideal Candidates for This Course
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  This course is specifically designed for the following profiles
+                </p>
+              </div>
+            </ScrollReveal>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+              {whoShouldData.targetAudience.map((audience, index) => (
+                <ScrollReveal key={index} delay={index * 0.1}>
+                  <Card className="h-full border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg">
+                    <CardContent className="p-6 flex items-start gap-4">
+                      <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                      <p className="text-foreground">{audience}</p>
+                    </CardContent>
+                  </Card>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Audience Categories */}
       <section className="py-16 px-4 sm:px-6">
