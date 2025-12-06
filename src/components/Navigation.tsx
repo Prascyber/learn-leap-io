@@ -33,9 +33,10 @@ const Navigation = () => {
   }];
   return <nav className="sticky top-0 z-50 border-b border-border/50 bg-white">
       <div className="container flex h-24 items-center justify-between">
-        <Link to="/" className="flex items-center -ml-24 mr-4 mt-4">
-          <img src={logo} alt="EdHere Academy" className="h-20 w-40 border-0 rounded-none object-cover" />
-        </Link> 
+        <Link to="/" className="flex items-center gap-2 md:-ml-24 mr-2 md:mr-4 mt-2 md:mt-4">
+          <img src={logo} alt="EdHere Academy" className="h-12 w-24 md:h-20 md:w-40 border-0 rounded-none object-contain" />
+          <span className="md:hidden text-sm font-semibold text-primary whitespace-nowrap">EdHere Academy</span>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
