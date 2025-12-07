@@ -17,11 +17,11 @@ import {
 
 // ✅ STANDALONE "Who Should Choose Us" BANNER (NOT in carousel)
 const WhoShouldChooseBanner = () => (
-  <section className="w-full flex justify-center bg-background">
+  <section className="w-full bg-background">
     {/* square corners, centered, with border */}
-    <div className="relative w-full max-w-6xl mx-auto mt-0 border border-border/60 shadow-md overflow-hidden">
-      {/* Banner area – big height + vertical center */}
-      <div className="relative min-h-[70vh] md:min-h-[70vh] bg-card flex items-center">
+    <div className="relative w-full max-w-6xl mx-auto mt-0 border border-border/60 shadow-md overflow-hidden px-3 sm:px-4">
+      {/* Banner area – height + vertical center */}
+      <div className="relative min-h-[60vh] md:min-h-[70vh] bg-card flex items-center">
         {/* Background AI image (professional girl with book) */}
         <img
           src={bannerBackground}
@@ -33,13 +33,13 @@ const WhoShouldChooseBanner = () => (
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/60" />
 
         {/* Content */}
-        <div className="relative w-full px-4 sm:px-8">
+        <div className="relative w-full py-8 sm:py-10 md:py-12">
           <div className="w-full flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-10">
             
             {/* LEFT SIDE – HEADING + CTAs */}
             <div className="space-y-3 sm:space-y-4 max-w-xl">
               <div className="space-y-2">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                   Who Should Choose Us
                 </h2>
                 <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
@@ -52,7 +52,7 @@ const WhoShouldChooseBanner = () => (
                 <Button 
                   size="sm"
                   asChild
-                  className="min-h-[40px] sm:min-h-[44px] px-3 sm:px-6 text-xs sm:text-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+                  className="min-h-[38px] sm:min-h-[44px] px-3 sm:px-6 text-xs sm:text-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
                 >
                   <Link to="/students-professionals">
                     <GraduationCap className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
@@ -63,7 +63,7 @@ const WhoShouldChooseBanner = () => (
                   size="sm"
                   variant="secondary"
                   asChild
-                  className="min-h-[40px] sm:min-h-[44px] px-3 sm:px-5 text-xs sm:text-sm bg-primary/20 hover:bg-primary/30 text-foreground transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+                  className="min-h-[38px] sm:min-h-[44px] px-3 sm:px-5 text-xs sm:text-sm bg-primary/20 hover:bg-primary/30 text-foreground transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
                 >
                   <Link to="/corporate">
                     <Building2 className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
@@ -77,17 +77,17 @@ const WhoShouldChooseBanner = () => (
                 <Button 
                   size="sm" 
                   asChild
-                  className="min-h-[40px] sm:min-h-[48px] px-4 sm:px-8 text-xs sm:text-lg transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
+                  className="min-h-[40px] sm:min-h-[46px] px-4 sm:px-8 text-xs sm:text-sm md:text-base transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
                 >
                   <Link to="/courses">Explore Courses</Link>
                 </Button>
-                <span className="px-2 py-1 sm:px-4 sm:py-2 bg-accent/80 text-accent-foreground rounded-full text-[10px] sm:text-sm font-semibold">
+                <span className="px-2 py-1 sm:px-4 sm:py-2 bg-accent/80 text-accent-foreground rounded-full text-[11px] sm:text-sm font-semibold">
                   ZERO COST EMI AVAILABLE
                 </span>
               </div>
 
               {/* Mobile-only benefits */}
-              <div className="flex md:hidden flex-wrap gap-1.5 pt-2">
+              <div className="flex md:hidden flex-wrap gap-1.5 pt-3">
                 {[
                   "Placement Assistance",
                   "Mock Interviews",
@@ -95,7 +95,10 @@ const WhoShouldChooseBanner = () => (
                   "Certificates",
                   "Recordings"
                 ].map((benefit, index) => (
-                  <span key={index} className="flex items-center gap-1 text-[10px] bg-card/80 px-2 py-1 rounded-full border border-border/50">
+                  <span
+                    key={index}
+                    className="flex items-center gap-1 text-[11px] bg-card/80 px-2 py-1 rounded-full border border-border/50"
+                  >
                     <CheckCheck className="w-3 h-3 text-primary shrink-0" strokeWidth={3} />
                     {benefit}
                   </span>
@@ -104,7 +107,7 @@ const WhoShouldChooseBanner = () => (
             </div>
 
             {/* RIGHT SIDE – BENEFITS CARD (desktop only) */}
-            <div className="hidden md:block bg-card/80 backdrop-blur-sm rounded-xl p-5 lg:p-6 border border-border/50 shadow-lg min-w-[240px]">
+            <div className="hidden md:block bg-card/80 backdrop-blur-sm rounded-xl p-4 lg:p-6 border border-border/50 shadow-lg min-w-[240px] max-w-xs">
               <ul className="space-y-3 lg:space-y-4">
                 {[
                   "Placement Assistance",
@@ -115,16 +118,17 @@ const WhoShouldChooseBanner = () => (
                 ].map((benefit, index) => (
                   <li key={index} className="flex items-center gap-3 text-sm lg:text-base">
                     <CheckCheck className="w-5 h-5 text-primary shrink-0" strokeWidth={3} />
-                    <span className="
-  font-medium 
-  text-foreground 
-  drop-shadow-[0_0_6px_rgba(255,220,0,0.6)]
-  hover:drop-shadow-[0_0_10px_rgba(255,220,0,0.9)]
-  transition-all
-">
-  {benefit}
-</span>
-
+                    <span
+                      className="
+                        font-medium 
+                        text-foreground 
+                        drop-shadow-[0_0_6px_rgba(255,220,0,0.6)]
+                        hover:drop-shadow-[0_0_10px_rgba(255,220,0,0.9)]
+                        transition-all
+                      "
+                    >
+                      {benefit}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -151,7 +155,7 @@ const WhoShouldChooseButton = ({ courseSlug }: { courseSlug: string }) => {
         <Button 
           size="sm" 
           variant="secondary"
-          className="text-xs sm:text-base px-4 py-3 sm:px-8 sm:py-6 min-h-[40px] sm:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.4)] hover:-translate-y-1 bg-primary/90 text-primary-foreground hover:bg-primary"
+          className="text-xs sm:text-sm md:text-base px-4 py-3 sm:px-6 md:px-8 sm:py-5 md:py-6 min-h-[40px] sm:min-h-[46px] md:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.4)] hover:-translate-y-1 bg-primary/90 text-primary-foreground hover:bg-primary"
           onMouseEnter={() => {
             if (window.innerWidth >= 768) {
               setIsOpen(true);
@@ -174,7 +178,7 @@ const WhoShouldChooseButton = ({ courseSlug }: { courseSlug: string }) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent 
-        className="w-80 sm:w-96 p-4 bg-card border border-border shadow-xl z-50"
+        className="w-72 sm:w-80 md:w-96 p-4 bg-card border border-border shadow-xl z-50"
         align="start"
         sideOffset={8}
         onMouseEnter={() => {
@@ -195,7 +199,10 @@ const WhoShouldChooseButton = ({ courseSlug }: { courseSlug: string }) => {
           </h4>
           <ul className="space-y-2">
             {targetAudience.map((audience, index) => (
-              <li key={index} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
+              <li
+                key={index}
+                className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground"
+              >
                 <CheckCheck className="w-4 h-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
                 <span>{audience}</span>
               </li>
@@ -208,9 +215,15 @@ const WhoShouldChooseButton = ({ courseSlug }: { courseSlug: string }) => {
 };
 
 // Component for Course slide
-const CourseSlide = ({ course, courseBenefits }: { course: typeof courses[0], courseBenefits: Record<string, string> }) => (
+const CourseSlide = ({
+  course,
+  courseBenefits,
+}: {
+  course: typeof courses[0];
+  courseBenefits: Record<string, string>;
+}) => (
   <CarouselItem>
-    <div className="relative h-[55vh] sm:h-[45vh] md:h-[50vh] w-full overflow-hidden">
+    <div className="relative h-[60vh] sm:h-[50vh] md:h-[50vh] w-full overflow-hidden">
       <div className="absolute inset-0">
         <img
           src={courseImages[course.slug]}
@@ -220,20 +233,20 @@ const CourseSlide = ({ course, courseBenefits }: { course: typeof courses[0], co
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
       </div>
       <div className="relative h-full container flex items-center px-3 sm:px-6">
-        <div className="max-w-2xl space-y-3 sm:space-y-6 animate-fade-in">
-          <div className="space-y-1 sm:space-y-4">
-            <h2 className="text-lg sm:text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
+        <div className="max-w-2xl space-y-3 sm:space-y-5 animate-fade-in">
+          <div className="space-y-1 sm:space-y-3">
+            <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
               {course.title}
             </h2>
-            <p className="text-sm sm:text-base md:text-xl text-muted-foreground line-clamp-2">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground line-clamp-2">
               {courseBenefits[course.slug as keyof typeof courseBenefits]}
             </p>
           </div>
           <div className="flex flex-wrap gap-2 sm:gap-3">
-            <Button 
-              size="sm" 
+            <Button
+              size="sm"
               asChild
-              className="text-xs sm:text-base px-4 py-3 sm:px-8 sm:py-6 min-h-[40px] sm:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
+              className="text-xs sm:text-sm md:text-base px-4 py-3 sm:px-6 md:px-8 sm:py-5 md:py-6 min-h-[40px] sm:min-h-[46px] md:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
             >
               <Link to={`/courses/${course.slug}`}>Enroll Now</Link>
             </Button>
@@ -304,7 +317,7 @@ const HeroCarousel = () => {
     "strategic-management": "Lead with Strategic Business Acumen",
     "human-resource-management": "Excel in Modern HR Practices",
     "quality-management": "Drive Quality Excellence in Organizations",
-    "hr-analytics": "Leverage Data for HR Decision Making"
+    "hr-analytics": "Leverage Data for HR Decision Making",
   };
 
   const totalSlides = courses.length;
@@ -316,17 +329,17 @@ const HeroCarousel = () => {
 
       {/* 🔹 BOTTOM: only course sliding banner, with some gap */}
       <div
-        className="relative mt-28 md:mt-36"
+        className="relative mt-10 sm:mt-14 md:mt-20"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
           <CarouselContent>
             {courses.map((course) => (
-              <CourseSlide 
-                key={course.id} 
-                course={course} 
-                courseBenefits={courseBenefits} 
+              <CourseSlide
+                key={course.id}
+                course={course}
+                courseBenefits={courseBenefits}
               />
             ))}
           </CarouselContent>
@@ -335,12 +348,12 @@ const HeroCarousel = () => {
         </Carousel>
 
         {/* Carousel Dots Indicator – attached to slider part only */}
-        <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2 z-10 max-w-[90vw] overflow-x-auto">
+        <div className="pointer-events-none absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2 z-10 max-w-[90vw] overflow-x-auto">
           {Array.from({ length: totalSlides }).map((_, index) => (
             <button
               key={index}
               onClick={() => api?.scrollTo(index)}
-              className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-foreground/30 hover:bg-foreground/50 transition-colors shrink-0"
+              className="pointer-events-auto w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-foreground/30 hover:bg-foreground/50 transition-colors shrink-0"
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
