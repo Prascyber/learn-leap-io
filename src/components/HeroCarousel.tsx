@@ -6,12 +6,15 @@ import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
 import { whoShouldChooseData } from "@/data/whoShouldChooseData";
 import type { CarouselApi } from "@/components/ui/carousel";
-import { GraduationCap, Building2, CheckCheck, ChevronDown, Users } from "lucide-react";
+import { GraduationCap, Building2, CheckCheck, ChevronDown, Users, ArrowRight, ArrowLeft } from "lucide-react";
+import bannerBackground from "@/assets/who-should-choose-banner.jpg";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+
+
 
 // Component for "Who Should Choose Us" slide
 const WhoShouldChooseSlide = () => (

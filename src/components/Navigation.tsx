@@ -40,8 +40,15 @@ const Navigation = () => {
           <img src={logo} alt="EdHere Academy" className="h-16 w-64 border-0 rounded-none object-cover" />
         </Link> 
 
+
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
+
+   {/* Premium Badge */}
+          <span className="premium-badge">
+            Starting at ₹999 only
+          </span>
+
           {navLinks.map(link => {
             if (link.path === "/courses") {
               return (
@@ -117,6 +124,15 @@ const Navigation = () => {
       {/* Mobile Navigation */}
       {isMenuOpen && <div className="md:hidden border-t bg-background">
           <div className="container py-4 flex flex-col gap-2">
+
+ {/* Premium Badge */}
+      <div className="flex justify-center mb-2">
+        <span className="premium-badge">
+          Starting at ₹999 only
+        </span>
+      </div>
+
+
             {navLinks.map(link => {
               if (link.path === "/courses") {
                 return (
