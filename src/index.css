@@ -27,7 +27,7 @@ All colors MUST be HSL.
     --secondary-foreground: 220 20% 18%;
 
     --muted: 45 20% 92%;
-    --muted-foreground: 220 15% 45%;
+    --muted-foreground: 0 0% 0%;
 
     --accent: 45 95% 48%;
     --accent-foreground: 220 20% 15%;

@@ -257,11 +257,6 @@ const HeroCarousel = () => {
       startAutoSlide();
     }
 
-<<<<<<< HEAD
-    const intervalId = setInterval(() => {
-      api.scrollNext();
-    }, 5000);
-=======
     return () => {
       stopAutoSlide();
       if (resumeTimeoutRef.current) {
@@ -269,7 +264,6 @@ const HeroCarousel = () => {
       }
     };
   }, [api, isPaused, startAutoSlide, stopAutoSlide]);
->>>>>>> 43bdf1086a5fb991ec441c097abb3323c1455f4e
 
   const handleMouseEnter = () => {
     setIsPaused(true);
