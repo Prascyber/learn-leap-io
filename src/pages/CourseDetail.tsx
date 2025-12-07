@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { courses } from "@/data/courses";
-import { Award, Clock, Check, Users, TrendingUp, ShoppingCart, Sparkles, IndianRupee } from "lucide-react";
+import { Award, Clock, CheckCheck, Users, TrendingUp, ShoppingCart, Sparkles, IndianRupee } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
@@ -154,7 +154,7 @@ const CourseDetail = () => {
                 <ul className="space-y-3">
                   {course.whoShouldTake.map((item, index) => (
                     <li key={index} className="flex items-start gap-3 group">
-                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" strokeWidth={3} />
+                      <CheckCheck className="h-5 w-5 text-primary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" strokeWidth={3} />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -167,7 +167,7 @@ const CourseDetail = () => {
                 <div className="grid sm:grid-cols-2 gap-3">
                   {course.whatYouWillLearn.map((item, index) => (
                     <div key={index} className="flex items-start gap-3 group">
-                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" strokeWidth={3} />
+                      <CheckCheck className="h-5 w-5 text-primary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" strokeWidth={3} />
                       <span>{item}</span>
                     </div>
                   ))}
@@ -201,7 +201,7 @@ const CourseDetail = () => {
                     <Card key={index} className="group hover:shadow-lg hover:scale-105 hover:border-primary/30 transition-all duration-300 ease-out cursor-default">
                       <CardContent className="pt-6">
                         <div className="flex items-start gap-3">
-                          <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" strokeWidth={3} />
+                          <CheckCheck className="h-5 w-5 text-primary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" strokeWidth={3} />
                           <span>{benefit}</span>
                         </div>
                       </CardContent>
