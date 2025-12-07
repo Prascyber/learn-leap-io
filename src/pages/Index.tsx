@@ -8,7 +8,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import HeroCarousel from "@/components/HeroCarousel";
 import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
-import { CheckCircle, Award, BookOpen, Users, TrendingUp, Clock, GraduationCap, Briefcase, Building2 } from "lucide-react";
+import { Check, Award, BookOpen, Users, TrendingUp, Clock, GraduationCap, Briefcase, Building2 } from "lucide-react";
 import Counter from "@/components/Counter";
 
 const Index = () => {
@@ -169,7 +169,7 @@ const Index = () => {
                 description: "Learn skills that employers actually need, designed by industry experts"
               },
               {
-                icon: CheckCircle,
+                icon: Check,
                 title: "Practical Assignments",
                 description: "Work on real-world projects and build a portfolio that stands out"
               },
