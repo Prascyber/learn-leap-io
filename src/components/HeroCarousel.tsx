@@ -4,8 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
+import { whoShouldChooseData } from "@/data/whoShouldChooseData";
 import type { CarouselApi } from "@/components/ui/carousel";
-import { GraduationCap, Building2, CheckCircle } from "lucide-react";
+import { GraduationCap, Building2, CheckCircle, ChevronDown, Users } from "lucide-react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 // Component for "Who Should Choose Us" slide
 const WhoShouldChooseSlide = () => (
@@ -115,6 +121,75 @@ const WhoShouldChooseSlide = () => (
   </CarouselItem>
 );
 
+// Who Should Choose Dropdown Button component
+const WhoShouldChooseButton = ({ courseSlug }: { courseSlug: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const courseData = whoShouldChooseData.find(item => item.courseSlug === courseSlug);
+  const targetAudience = courseData?.targetAudience || [];
+
+  return (
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <PopoverTrigger asChild>
+        <Button 
+          size="sm" 
+          variant="secondary"
+          className="text-xs sm:text-base px-4 py-3 sm:px-8 sm:py-6 min-h-[40px] sm:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.4)] hover:-translate-y-1 bg-primary/90 text-primary-foreground hover:bg-primary"
+          onMouseEnter={() => {
+            if (window.innerWidth >= 768) {
+              setIsOpen(true);
+            }
+          }}
+          onMouseLeave={() => {
+            if (window.innerWidth >= 768) {
+              setIsOpen(false);
+            }
+          }}
+          onClick={() => {
+            if (window.innerWidth < 768) {
+              setIsOpen(!isOpen);
+            }
+          }}
+        >
+          <Users className="w-4 h-4 mr-2" />
+          Who Should Choose?
+          <ChevronDown className={`w-4 h-4 ml-2 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent 
+        className="w-80 sm:w-96 p-4 bg-card border border-border shadow-xl z-50"
+        align="start"
+        sideOffset={8}
+        onMouseEnter={() => {
+          if (window.innerWidth >= 768) {
+            setIsOpen(true);
+          }
+        }}
+        onMouseLeave={() => {
+          if (window.innerWidth >= 768) {
+            setIsOpen(false);
+          }
+        }}
+      >
+        <div className="space-y-3">
+          <h4 className="font-semibold text-sm sm:text-base flex items-center gap-2">
+            <Users className="w-4 h-4 text-primary" />
+            This course is ideal for:
+          </h4>
+          <ul className="space-y-2">
+            {targetAudience.map((audience, index) => (
+              <li key={index} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
+                <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                <span>{audience}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+};
+
 // Component for Course slide
 const CourseSlide = ({ course, courseBenefits }: { course: typeof courses[0], courseBenefits: Record<string, string> }) => (
   <CarouselItem>
@@ -145,14 +220,7 @@ const CourseSlide = ({ course, courseBenefits }: { course: typeof courses[0], co
             >
               <Link to={`/courses/${course.slug}`}>Enroll Now</Link>
             </Button>
-            <Button 
-              size="sm" 
-              variant="secondary"
-              asChild
-              className="text-xs sm:text-base px-4 py-3 sm:px-8 sm:py-6 min-h-[40px] sm:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.4)] hover:-translate-y-1 bg-primary/90 text-primary-foreground hover:bg-primary"
-            >
-              <Link to={`/who-should-choose/${course.slug}`}>Who Should Choose?</Link>
-            </Button>
+            <WhoShouldChooseButton courseSlug={course.slug} />
           </div>
         </div>
       </div>
