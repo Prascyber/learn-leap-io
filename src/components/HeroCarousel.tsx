@@ -19,7 +19,9 @@ import {
 const WhoShouldChooseBanner = () => (
   <section className="w-full bg-background">
     {/* square corners, centered, with border */}
-    <div className="relative w-full max-w-6xl mx-auto mt-0 border border-border/60 shadow-md overflow-hidden px-3 sm:px-4">
+<div className="relative w-full max-w-6xl mx-auto mt-0 border border-border/60 shadow-md overflow-hidden">
+
+
       {/* Banner area – height + vertical center */}
       <div className="relative min-h-[60vh] md:min-h-[70vh] bg-card flex items-center">
         {/* Background AI image (professional girl with book) */}
@@ -33,7 +35,8 @@ const WhoShouldChooseBanner = () => (
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/60" />
 
         {/* Content */}
-        <div className="relative w-full py-8 sm:py-10 md:py-12">
+        <div className="relative w-full px-4 sm:px-8 lg:px-10 py-8 sm:py-10 md:py-12">
+
           <div className="w-full flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-10">
             
             {/* LEFT SIDE – HEADING + CTAs */}
