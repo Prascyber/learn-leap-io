@@ -76,7 +76,7 @@ const WhoShouldChooseSlide = () => (
               >
                 <Link to="/courses">Explore Courses</Link>
               </Button>
-              <span className="px-2 py-1 sm:px-4 sm:py-2 bg-accent/80 text-accent-foreground rounded-full text-[10px] sm:text-sm font-semibold animate-pulse">
+              <span className="px-2 py-1 sm:px-4 sm:py-2 bg-accent/80 text-accent-foreground rounded-full text-[10px] sm:text-sm font-semibold">
                 ZERO COST EMI AVAILABLE
               </span>
             </div>
