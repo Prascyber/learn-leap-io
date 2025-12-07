@@ -170,7 +170,7 @@ const HeroCarousel = () => {
 
     const intervalId = setInterval(() => {
       api.scrollNext();
-    }, 5000);
+    }, 50000);
 
     return () => clearInterval(intervalId);
   }, [api]);
