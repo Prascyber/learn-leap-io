@@ -1,11 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
+import { whoShouldChooseData } from "@/data/whoShouldChooseData";
 import type { CarouselApi } from "@/components/ui/carousel";
-import { GraduationCap, Building2, CheckCircle } from "lucide-react";
+import { GraduationCap, Building2, Check, ChevronDown, Users } from "lucide-react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 // Component for "Who Should Choose Us" slide
 const WhoShouldChooseSlide = () => (
@@ -85,7 +91,7 @@ const WhoShouldChooseSlide = () => (
                 "Recordings"
               ].map((benefit, index) => (
                 <span key={index} className="flex items-center gap-1 text-[10px] bg-card/80 px-2 py-1 rounded-full border border-border/50">
-                  <CheckCircle className="w-3 h-3 text-primary shrink-0" />
+                  <Check className="w-3 h-3 text-primary shrink-0" strokeWidth={3} />
                   {benefit}
                 </span>
               ))}
@@ -103,7 +109,7 @@ const WhoShouldChooseSlide = () => (
                 "Recording Access"
               ].map((benefit, index) => (
                 <li key={index} className="flex items-center gap-3 text-sm lg:text-base">
-                  <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                  <Check className="w-5 h-5 text-primary shrink-0" strokeWidth={3} />
                   <span className="font-medium">{benefit}</span>
                 </li>
               ))}
@@ -114,6 +120,75 @@ const WhoShouldChooseSlide = () => (
     </div>
   </CarouselItem>
 );
+
+// Who Should Choose Dropdown Button component
+const WhoShouldChooseButton = ({ courseSlug }: { courseSlug: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const courseData = whoShouldChooseData.find(item => item.courseSlug === courseSlug);
+  const targetAudience = courseData?.targetAudience || [];
+
+  return (
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <PopoverTrigger asChild>
+        <Button 
+          size="sm" 
+          variant="secondary"
+          className="text-xs sm:text-base px-4 py-3 sm:px-8 sm:py-6 min-h-[40px] sm:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.4)] hover:-translate-y-1 bg-primary/90 text-primary-foreground hover:bg-primary"
+          onMouseEnter={() => {
+            if (window.innerWidth >= 768) {
+              setIsOpen(true);
+            }
+          }}
+          onMouseLeave={() => {
+            if (window.innerWidth >= 768) {
+              setIsOpen(false);
+            }
+          }}
+          onClick={() => {
+            if (window.innerWidth < 768) {
+              setIsOpen(!isOpen);
+            }
+          }}
+        >
+          <Users className="w-4 h-4 mr-2" />
+          Who Should Choose?
+          <ChevronDown className={`w-4 h-4 ml-2 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent 
+        className="w-80 sm:w-96 p-4 bg-card border border-border shadow-xl z-50"
+        align="start"
+        sideOffset={8}
+        onMouseEnter={() => {
+          if (window.innerWidth >= 768) {
+            setIsOpen(true);
+          }
+        }}
+        onMouseLeave={() => {
+          if (window.innerWidth >= 768) {
+            setIsOpen(false);
+          }
+        }}
+      >
+        <div className="space-y-3">
+          <h4 className="font-semibold text-sm sm:text-base flex items-center gap-2">
+            <Users className="w-4 h-4 text-primary" />
+            This course is ideal for:
+          </h4>
+          <ul className="space-y-2">
+            {targetAudience.map((audience, index) => (
+              <li key={index} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
+                <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
+                <span>{audience}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+};
 
 // Component for Course slide
 const CourseSlide = ({ course, courseBenefits }: { course: typeof courses[0], courseBenefits: Record<string, string> }) => (
@@ -145,14 +220,7 @@ const CourseSlide = ({ course, courseBenefits }: { course: typeof courses[0], co
             >
               <Link to={`/courses/${course.slug}`}>Enroll Now</Link>
             </Button>
-            <Button 
-              size="sm" 
-              variant="secondary"
-              asChild
-              className="text-xs sm:text-base px-4 py-3 sm:px-8 sm:py-6 min-h-[40px] sm:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.4)] hover:-translate-y-1 bg-primary/90 text-primary-foreground hover:bg-primary"
-            >
-              <Link to={`/who-should-choose/${course.slug}`}>Who Should Choose?</Link>
-            </Button>
+            <WhoShouldChooseButton courseSlug={course.slug} />
           </div>
         </div>
       </div>
@@ -162,18 +230,60 @@ const CourseSlide = ({ course, courseBenefits }: { course: typeof courses[0], co
 
 const HeroCarousel = () => {
   const [api, setApi] = useState<CarouselApi>();
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const resumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startAutoSlide = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
+      api?.scrollNext();
+    }, 5000);
+  }, [api]);
+
+  const stopAutoSlide = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
 
   useEffect(() => {
-    if (!api) {
-      return;
+    if (!api) return;
+
+    if (!isPaused) {
+      startAutoSlide();
     }
 
+<<<<<<< HEAD
     const intervalId = setInterval(() => {
       api.scrollNext();
     }, 5000);
+=======
+    return () => {
+      stopAutoSlide();
+      if (resumeTimeoutRef.current) {
+        clearTimeout(resumeTimeoutRef.current);
+      }
+    };
+  }, [api, isPaused, startAutoSlide, stopAutoSlide]);
+>>>>>>> 43bdf1086a5fb991ec441c097abb3323c1455f4e
 
-    return () => clearInterval(intervalId);
-  }, [api]);
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+    stopAutoSlide();
+    if (resumeTimeoutRef.current) {
+      clearTimeout(resumeTimeoutRef.current);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    resumeTimeoutRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 5000);
+  };
 
   const courseBenefits = {
     "healthcare-insurance": "Master Health Insurance Operations & TPA Management",
@@ -209,7 +319,7 @@ const HeroCarousel = () => {
   const totalSlides = slides.length;
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
         <CarouselContent>
           {slides.map((slide, index) => (

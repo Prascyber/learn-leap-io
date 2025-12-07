@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Building2, Users, Target, TrendingUp, Award, CheckCircle, ArrowLeft } from "lucide-react";
+import { Building2, Users, Target, TrendingUp, Award, Check, ArrowLeft } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const Corporate = () => {
@@ -84,7 +84,7 @@ const Corporate = () => {
               {features.map((feature, index) => (
                 <ScrollReveal key={index} delay={index * 50}>
                   <div className="flex items-center gap-3 p-4 bg-card rounded-lg border">
-                    <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                    <Check className="w-5 h-5 text-primary shrink-0" strokeWidth={3} />
                     <span className="font-medium">{feature}</span>
                   </div>
                 </ScrollReveal>
