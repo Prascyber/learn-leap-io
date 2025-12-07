@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -162,18 +162,54 @@ const CourseSlide = ({ course, courseBenefits }: { course: typeof courses[0], co
 
 const HeroCarousel = () => {
   const [api, setApi] = useState<CarouselApi>();
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const resumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startAutoSlide = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
+      api?.scrollNext();
+    }, 5000);
+  }, [api]);
+
+  const stopAutoSlide = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
 
   useEffect(() => {
-    if (!api) {
-      return;
+    if (!api) return;
+
+    if (!isPaused) {
+      startAutoSlide();
     }
 
-    const intervalId = setInterval(() => {
-      api.scrollNext();
-    }, 50000);
+    return () => {
+      stopAutoSlide();
+      if (resumeTimeoutRef.current) {
+        clearTimeout(resumeTimeoutRef.current);
+      }
+    };
+  }, [api, isPaused, startAutoSlide, stopAutoSlide]);
 
-    return () => clearInterval(intervalId);
-  }, [api]);
+  const handleMouseEnter = () => {
+    setIsPaused(true);
+    stopAutoSlide();
+    if (resumeTimeoutRef.current) {
+      clearTimeout(resumeTimeoutRef.current);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    resumeTimeoutRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 5000);
+  };
 
   const courseBenefits = {
     "healthcare-insurance": "Master Health Insurance Operations & TPA Management",
@@ -209,7 +245,7 @@ const HeroCarousel = () => {
   const totalSlides = slides.length;
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
         <CarouselContent>
           {slides.map((slide, index) => (
