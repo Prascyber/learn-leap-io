@@ -6,7 +6,7 @@ import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
 import { whoShouldChooseData } from "@/data/whoShouldChooseData";
 import type { CarouselApi } from "@/components/ui/carousel";
-import { GraduationCap, Building2, Check, ChevronDown, Users } from "lucide-react";
+import { GraduationCap, Building2, CheckCheck, ChevronDown, Users } from "lucide-react";
 import {
   Popover,
   PopoverContent,
@@ -91,7 +91,7 @@ const WhoShouldChooseSlide = () => (
                 "Recordings"
               ].map((benefit, index) => (
                 <span key={index} className="flex items-center gap-1 text-[10px] bg-card/80 px-2 py-1 rounded-full border border-border/50">
-                  <Check className="w-3 h-3 text-primary shrink-0" strokeWidth={3} />
+                  <CheckCheck className="w-3 h-3 text-primary shrink-0" strokeWidth={3} />
                   {benefit}
                 </span>
               ))}
@@ -109,7 +109,7 @@ const WhoShouldChooseSlide = () => (
                 "Recording Access"
               ].map((benefit, index) => (
                 <li key={index} className="flex items-center gap-3 text-sm lg:text-base">
-                  <Check className="w-5 h-5 text-primary shrink-0" strokeWidth={3} />
+                  <CheckCheck className="w-5 h-5 text-primary shrink-0" strokeWidth={3} />
                   <span className="font-medium">{benefit}</span>
                 </li>
               ))}
@@ -179,7 +179,7 @@ const WhoShouldChooseButton = ({ courseSlug }: { courseSlug: string }) => {
           <ul className="space-y-2">
             {targetAudience.map((audience, index) => (
               <li key={index} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
-                <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
+                <CheckCheck className="w-4 h-4 text-primary shrink-0 mt-0.5" strokeWidth={3} />
                 <span>{audience}</span>
               </li>
             ))}
