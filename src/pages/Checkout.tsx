@@ -11,7 +11,7 @@ import { useCart } from "@/contexts/CartContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { ShoppingCart, Trash2, Tag, CreditCard, CheckCircle, Sparkles, ArrowRight } from "lucide-react";
+import { ShoppingCart, Trash2, Tag, CreditCard, Check, Sparkles, ArrowRight } from "lucide-react";
 
 interface Coupon {
   code: string;
@@ -288,7 +288,7 @@ const Checkout = () => {
                     {appliedCoupon ? (
                       <div className="flex items-center justify-between bg-primary/10 p-3 rounded-lg">
                         <div className="flex items-center gap-2">
-                          <CheckCircle className="h-5 w-5 text-primary" />
+                          <Check className="h-5 w-5 text-primary" strokeWidth={3} />
                           <span className="font-medium">{appliedCoupon.code}</span>
                           <Badge variant="secondary">{appliedCoupon.discount_percent}% OFF</Badge>
                         </div>
@@ -375,7 +375,7 @@ const Checkout = () => {
                     </Button>
 
                     <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground mt-4">
-                      <CheckCircle className="h-4 w-4 text-green-600" />
+                      <Check className="h-4 w-4 text-green-600" strokeWidth={3} />
                       <span>Secure payment powered by Razorpay</span>
                     </div>
                   </CardContent>
