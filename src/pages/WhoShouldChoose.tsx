@@ -1,7 +1,9 @@
 import { useParams, Link } from "react-router-dom";
 import { courses } from "@/data/courses";
+import { whoShouldChooseData } from "@/data/whoShouldChooseData";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, CheckCircle, Users, Briefcase, GraduationCap } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowLeft, CheckCircle } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -9,6 +11,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 const WhoShouldChoose = () => {
   const { slug } = useParams();
   const course = courses.find((c) => c.slug === slug);
+  const whoShouldData = whoShouldChooseData.find((w) => w.courseSlug === slug);
 
   if (!course) {
     return (
@@ -22,42 +25,6 @@ const WhoShouldChoose = () => {
       </div>
     );
   }
-
-  const audienceCategories = [
-    {
-      icon: GraduationCap,
-      title: "Students",
-      description: "Fresh graduates and final-year students looking to gain industry-relevant skills and stand out in the job market.",
-      benefits: [
-        "Build a strong foundation in industry practices",
-        "Gain practical knowledge beyond academics",
-        "Earn a completion certificate to boost your resume",
-        "Access internship opportunities"
-      ]
-    },
-    {
-      icon: Briefcase,
-      title: "Working Professionals",
-      description: "Career professionals seeking to upskill, switch domains, or advance in their current field.",
-      benefits: [
-        "Learn at your own pace with lifetime access",
-        "Apply new skills directly to your job",
-        "Stay updated with industry trends",
-        "Enhance career growth opportunities"
-      ]
-    },
-    {
-      icon: Users,
-      title: "Corporate Teams",
-      description: "Organizations looking to train their workforce with practical, job-ready skills.",
-      benefits: [
-        "Customized learning paths for teams",
-        "Track progress and completion",
-        "Industry-aligned curriculum",
-        "Cost-effective bulk enrollments"
-      ]
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -87,32 +54,36 @@ const WhoShouldChoose = () => {
         </div>
       </section>
 
-      {/* Audience Categories */}
-      <section className="py-16 px-4 sm:px-6">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            {audienceCategories.map((category, index) => (
-              <ScrollReveal key={category.title} delay={index * 0.1}>
-                <div className="bg-card rounded-2xl p-6 shadow-lg border border-border/50 h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                    <category.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{category.title}</h3>
-                  <p className="text-muted-foreground mb-6">{category.description}</p>
-                  <ul className="space-y-3">
-                    {category.benefits.map((benefit, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                        <span className="text-sm">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </ScrollReveal>
-            ))}
+      {/* Target Audience Section */}
+      {whoShouldData && (
+        <section className="py-12 sm:py-16">
+          <div className="container mx-auto px-4 sm:px-6">
+            <ScrollReveal>
+              <div className="text-center mb-10">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+                  Ideal Candidates for This Course
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  This course is specifically designed for the following profiles
+                </p>
+              </div>
+            </ScrollReveal>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+              {whoShouldData.targetAudience.map((audience, index) => (
+                <ScrollReveal key={index} delay={index * 0.1}>
+                  <Card className="h-full border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg">
+                    <CardContent className="p-6 flex items-start gap-4">
+                      <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
+                      <p className="text-foreground">{audience}</p>
+                    </CardContent>
+                  </Card>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="py-16 px-4 sm:px-6 bg-primary/5">
