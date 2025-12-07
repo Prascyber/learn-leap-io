@@ -142,18 +142,73 @@ All colors MUST be HSL.
 }
 
   .premium-badge {
-    @apply px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide;
-    background: var(--gradient-premium);
-    color: white;
-    box-shadow: var(--shadow-premium);
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
+  @apply inline-flex items-center px-4 sm:px-6 py-2 
+  text-sm sm:text-base font-semibold tracking-wide rounded-full;
 
-    @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: var(--shadow-premium);
-    }
-    50% {
-      box-shadow: 0 4px 20px -2px hsl(38, 92%, 50%, 0.5);
-    }
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #facc15, #fde047, #f97316);
+  color: #0f172a;
+  box-shadow: 0 12px 30px rgba(250, 204, 21, 0.35);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+}
+
+/* Main text – price part */
+.premium-pill-text {
+  @apply font-semibold;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.premium-pill-text strong {
+  font-weight: 800;
+}
+
+/* Shimmer / shine effect */
+.premium-badge::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.75),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: premium-shimmer 3s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+/* Subtle inner glow ring */
+.premium-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35) inset;
+  pointer-events: none;
+}
+
+/* Hover feel – thoda upar + aur glow */
+.premium-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(250, 204, 21, 0.55);
+  transition: all 0.25s ease-out;
+}
+
+/* Shimmer animation */
+@keyframes premium-shimmer {
+  0% {
+    transform: translateX(-130%);
   }
+  60% {
+    transform: translateX(130%);
+  }
+  100% {
+    transform: translateX(130%);
+  }
+}

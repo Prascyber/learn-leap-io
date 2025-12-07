@@ -45,9 +45,15 @@ const Navigation = () => {
         <div className="hidden md:flex items-center gap-6">
 
    {/* Premium Badge */}
-          <span className="premium-badge">
-            Starting at ₹999 only
-          </span>
+<div className="flex justify-center -mt-1">
+  <div className="premium-badge">
+    
+    <span className="premium-pill-text">
+      Starting at <strong>₹999</strong> only
+    </span>
+  </div>
+</div>
+
 
           {navLinks.map(link => {
             if (link.path === "/courses") {
