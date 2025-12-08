@@ -21,6 +21,18 @@ const WhoShouldChooseBanner = () => (
     {/* square corners, centered, with border */}
 <div className="relative w-full max-w-6xl mx-auto mt-0 border border-border/60 shadow-md overflow-hidden">
 
+  {/* Premium Badge */}
+  <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20">
+    <div className="premium-badge">
+      <span className="premium-pill-text">
+        Starting at <strong>₹999</strong> only
+      </span>
+    </div>
+  </div>
+
+
+
+
 
       {/* Banner area – height + vertical center */}
       <div className="relative min-h-[60vh] md:min-h-[70vh] bg-card flex items-center">
