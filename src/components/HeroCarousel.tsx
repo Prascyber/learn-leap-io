@@ -17,7 +17,7 @@ import {
 
 // ✅ STANDALONE "Who Should Choose Us" BANNER (NOT in carousel)
 const WhoShouldChooseBanner = () => (
-  <section className="w-full bg-background">
+  <section className="w-full bg-white">
     {/* square corners, centered, with border */}
 <div className="relative w-full max-w-6xl mx-auto mt-0 border border-border/60 shadow-md overflow-hidden">
 
@@ -338,7 +338,7 @@ const HeroCarousel = () => {
   const totalSlides = courses.length;
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full bg-white">
       {/* 🔹 TOP: Big Who Should Choose Banner (navbar se just neeche rakhna) */}
       <WhoShouldChooseBanner />
 
