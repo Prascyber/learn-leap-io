@@ -33,7 +33,7 @@ const WhoShouldChooseBanner = () => (
       </div>
 
       {/* Mobile premium */}
-      <div className="sm:hidden pt-2 flex justify-center z-20">
+      <div className="sm:hidden pt-1 flex justify-center z-20">
         <div className="premium-badge inline-block px-3 py-1 text-[11px]">
           Starting at <strong>₹999</strong> only
         </div>
@@ -74,8 +74,8 @@ const WhoShouldChooseBanner = () => (
           </p>
 
           {/* CTA */}
-          <div className="mt-5 flex flex-col sm:flex-row gap-3 justify-center sm:justify-start">
-            <Button size="sm" asChild className="px-5 py-3 text-sm">
+          <div className="mt-5 flex flex-col sm:flex-row gap-3 justify-center sm:justify-start ">
+            <Button size="sm" asChild className="px-5 py-3 text-sm ">
               <Link to="/students-professionals">
                 Students & Professionals
               </Link>
@@ -99,7 +99,7 @@ const WhoShouldChooseBanner = () => (
               <Link to="/courses">Explore Courses</Link>
             </Button>
 
-            <span className="px-4 py-2 bg-accent/80 text-accent-foreground rounded-full text-xs inline-flex items-center justify-center text-center">
+            <span className="px-4 py-2 bg-accent/80 text-accent-foreground rounded-full text-xs font-medium inline-block self-center sm:self-auto">
               ZERO COST EMI AVAILABLE
             </span>
           </div>
