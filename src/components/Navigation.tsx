@@ -247,12 +247,6 @@ const Navigation = () => {
         <div className="md:hidden border-t bg-background">
           <div className="container py-4 flex flex-col gap-2">
 
- {/* Premium Badge */}
-      <div className="flex justify-center mb-2">
-        <span className="premium-badge">
-          Starting at ₹999 only
-        </span>
-      </div>
 
 
             {navLinks.map((link) => {

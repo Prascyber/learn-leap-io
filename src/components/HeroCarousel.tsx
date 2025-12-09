@@ -1,12 +1,24 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { courses } from "@/data/courses";
 import { courseImages } from "@/data/courseImages";
 import { whoShouldChooseData } from "@/data/whoShouldChooseData";
 import type { CarouselApi } from "@/components/ui/carousel";
-import { GraduationCap, Building2, CheckCheck, ChevronDown, Users } from "lucide-react";
+import {
+  GraduationCap,
+  Building2,
+  CheckCheck,
+  ChevronDown,
+  Users,
+} from "lucide-react";
 import bannerBackground from "@/assets/who-should-choose-banner.jpg";
 import {
   Popover,
@@ -17,22 +29,26 @@ import {
 
 // ✅ STANDALONE "Who Should Choose Us" BANNER (NOT in carousel)
 const WhoShouldChooseBanner = () => (
-  <section className="w-full bg-white">
+  <section className="w-full bg-white px-3 sm:px-0">
     {/* square corners, centered, with border */}
-<div className="relative w-full max-w-6xl mx-auto mt-0 border border-border/60 shadow-md overflow-hidden">
+    <div className="relative w-full max-w-6xl mx-auto mt-2 sm:mt-0 border border-border/60 shadow-md overflow-hidden">
+      
+      {/* Premium Badge - desktop absolute (no change for desktop) */}
+      <div className="hidden sm:block absolute top-3 sm:top-4 right-3 sm:right-4 z-20">
+        <div className="premium-badge">
+          <span className="premium-pill-text">
+            Starting at <strong>₹999</strong> only
+          </span>
+        </div>
+      </div>
 
-  {/* Premium Badge */}
-  <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-20">
-    <div className="premium-badge">
-      <span className="premium-pill-text">
-        Starting at <strong>₹999</strong> only
-      </span>
-    </div>
-  </div>
-
-
-
-
+      {/* Premium Badge - mobile inline (no overlap) */}
+      {/* This only shows on < sm, desktop will not see this */}
+      <div className="sm:hidden absolute top-2 left-2 z-20">
+        <div className="premium-badge px-3 py-1 text-[10px]">
+          Starting at <strong>₹999</strong> only
+        </div>
+      </div>
 
       {/* Banner area – height + vertical center */}
       <div className="relative min-h-[60vh] md:min-h-[70vh] bg-card flex items-center">
@@ -48,7 +64,6 @@ const WhoShouldChooseBanner = () => (
 
         {/* Content */}
         <div className="relative w-full px-4 sm:px-8 lg:px-10 py-8 sm:py-10 md:py-12">
-
           <div className="w-full flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-10">
             
             {/* LEFT SIDE – HEADING + CTAs */}
@@ -170,7 +185,7 @@ const WhoShouldChooseButton = ({ courseSlug }: { courseSlug: string }) => {
         <Button 
           size="sm" 
           variant="secondary"
-          className="text-xs sm:text-sm md:text-base px-4 py-3 sm:px-6 md:px-8 sm:py-5 md:py-6 min-h-[40px] sm:min-h-[46px] md:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.4)] hover:-translate-y-1 bg-primary/90 text-primary-foreground hover:bg-primary"
+          className="text-xs sm:text-sm md:text-base px-4 py-2.5 sm:px-6 md:px-8 sm:py-5 md:py-6 min-h-[36px] sm:min-h-[46px] md:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.4)] hover:-translate-y-1 bg-primary/90 text-primary-foreground hover:bg-primary"
           onMouseEnter={() => {
             if (window.innerWidth >= 768) {
               setIsOpen(true);
@@ -238,7 +253,7 @@ const CourseSlide = ({
   courseBenefits: Record<string, string>;
 }) => (
   <CarouselItem>
-    <div className="relative h-[60vh] sm:h-[50vh] md:h-[50vh] w-full overflow-hidden">
+    <div className="relative h-[55vh] sm:h-[50vh] md:h-[50vh] w-full overflow-hidden">
       <div className="absolute inset-0">
         <img
           src={courseImages[course.slug]}
@@ -261,7 +276,7 @@ const CourseSlide = ({
             <Button
               size="sm"
               asChild
-              className="text-xs sm:text-sm md:text-base px-4 py-3 sm:px-6 md:px-8 sm:py-5 md:py-6 min-h-[40px] sm:min-h-[46px] md:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
+              className="text-xs sm:text-sm md:text-base px-4 py-2.5 sm:px-6 md:px-8 sm:py-5 md:py-6 min-h-[36px] sm:min-h-[46px] md:min-h-[48px] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(59,130,246,0.5)] hover:-translate-y-1"
             >
               <Link to={`/courses/${course.slug}`}>Enroll Now</Link>
             </Button>
